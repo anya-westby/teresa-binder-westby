@@ -8,6 +8,7 @@ export const Nav = styled.nav`
   width: 100vw;
   top: 0;
   left: 0;
+  margin: 0;
   display: flex;
   justify-content: center; // Change to center alignment
   align-items: center;

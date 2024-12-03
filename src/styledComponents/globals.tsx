@@ -1,4 +1,17 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
+
+const fadeUp = keyframes`
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    padding: 0;
+    margin: 0;
+    transform: translateY(0);
+  }
+`;
 
 export const theme = {
   darkGreen: "#2F4F4F",
@@ -7,72 +20,86 @@ export const theme = {
   cream: "#F5F5F1",
   charcoal: "#2C2C2C",
 };
-
 export const GlobalStyle = createGlobalStyle`
-  *, *::before, *::after {
+   * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    background: #000000;
+    color: #ffffff;
   }
 
   html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
     overflow-x: hidden;
-    width: 100%;
+    background: #000000;
   }
 
   body {
-   margin: 0 !important;     
-   padding: 0;
+    margin: 0;
+    padding: 0;
     width: 100%;
+    min-height: 100vh;
+    background: #000000;
+    color: #ffffff;
+    line-height: 1;
     overflow-x: hidden;
-    scroll-behavior: smooth;
-    position: relative;    box-sizing: border-box;
+  }
 
-}
-  
+  #gatsby-focus-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+  }
 
-  #___gatsby, #gatsby-focus-wrapper {
+  #___gatsby {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    background: #000000;
   }
 `;
 
-export const Header = styled.span`
+export const Header = styled.h1`
   color: ${theme.sage};
   font-family: "Montserrat", sans-serif !important;
-  font-weight: 400;
-  font-optical-sizing: auto;
+  font-weight: 300;
   font-size: 5rem;
-  font-style: bold;
-  font-variation-settings: "SOFT" 0, "WONK" 0;
   letter-spacing: 1px;
+  text-transform: uppercase;
   opacity: 0;
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: ${fadeUp} 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  @media (max-width: 768px) {
+    font-size: 4rem;
+    text-align: center;
   }
 `;
 
-export const Subtext = styled.span`
+export const Subtext = styled.h2`
   font-family: "DM Sans", sans-serif;
   font-size: 1.2rem;
-  letter-spacing: 3px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
   font-weight: 200;
   color: ${theme.cream};
   text-align: center;
   opacity: 0;
-  animation: fadeIn 0.8s ease-out forwards 0.2s;
-`;
+  animation: ${fadeUp} 1s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.3s;
 
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    letter-spacing: 8px;
+  }
+`;
 // New additions for the portfolio page
 export const ScrollContainer = styled.div`
   height: 100vh;

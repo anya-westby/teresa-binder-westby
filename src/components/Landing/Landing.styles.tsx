@@ -123,21 +123,22 @@ export const IntroSection = styled(Section)`
   }
 `;
 
-export const ImageContainer = styled.div<{ isLeft: boolean }>`
+export const ImageContainer = styled.div<{ isLeft: boolean; delay?: number }>`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateX(${(props) => (props.isLeft ? "-10%" : "10%")});
   opacity: 0;
+  transform: translateX(${(props) => (props.isLeft ? "-10%" : "10%")});
   animation: ${fadeScale} 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: ${(props) => props.delay || 0}s;
+  will-change: transform, opacity;
 
   @media (max-width: 768px) {
     transform: translateY(-5%);
     order: 2;
   }
 `;
-
 export const StyledImage = styled.img`
   width: 100%;
   height: auto;
@@ -169,7 +170,7 @@ export const ContentContainer = styled.div<{ isLeft: boolean }>`
   }
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h2<{ delay?: number }>`
   font-family: "Montserrat", sans-serif !important;
   font-weight: 400;
   font-optical-sizing: auto;
@@ -180,13 +181,15 @@ export const Title = styled.h2`
   letter-spacing: -1px;
   opacity: 0;
   animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: ${(props) => props.delay || 0}s;
+  will-change: transform, opacity;
 
   @media (max-width: 768px) {
     font-size: 3rem;
   }
 `;
 
-export const Description = styled.h2<{ isLeft?: boolean }>`
+export const Description = styled.h2<{ isLeft?: boolean; delay?: number }>`
   font-family: "DM Sans", sans-serif;
   font-size: 1.2rem;
   letter-spacing: 5px;
@@ -198,8 +201,9 @@ export const Description = styled.h2<{ isLeft?: boolean }>`
   max-width: 400px;
   text-align: ${(props) => (props.isLeft ? "left" : "right")};
   opacity: 0;
-  animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.2s;
-
+  animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation-delay: ${(props) => props.delay || 0.2}s;
+  will-change: transform, opacity;
   @media (max-width: 768px) {
     text-align: center;
     font-size: 1.1rem;

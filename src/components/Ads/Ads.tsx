@@ -1,4 +1,3 @@
-// Ads.tsx
 import React, { useState } from "react";
 import {
   Container,
@@ -37,7 +36,6 @@ export default function Ads() {
         <StyledIframe
           src={ads[currentIndex].imgSrc}
           title={ads[currentIndex].title}
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />

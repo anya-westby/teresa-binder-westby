@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { active_screen } from "../components/NavBar/NavBar";
 import { SiteWrapper } from "../components/SiteWrapper/SiteWrapper";
 import Films from "../components/Films/Films";

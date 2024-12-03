@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { active_screen } from "../components/NavBar/NavBar";
 import Contact from "../components/Contact/Contact";
 import { SiteWrapper } from "../components/SiteWrapper/SiteWrapper";

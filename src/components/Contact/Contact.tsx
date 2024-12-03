@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Mail, Phone, Title } from "@mui/icons-material";
 import * as S from "./Contact.styles";
 

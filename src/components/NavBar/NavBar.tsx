@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import React from "react";
+import * as React from "react";
 import Hamburger from "@mui/icons-material/Menu";
 import Close from "@mui/icons-material/Close";
 import useWindow from "../../utils/hooks/useWindow";

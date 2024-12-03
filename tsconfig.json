@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "jsx": "react",
+      "resolveJsonModule": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx", "node_modules/gatsby"]
+  }
+  

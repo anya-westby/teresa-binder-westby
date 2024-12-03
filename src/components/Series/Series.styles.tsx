@@ -1,13 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { Typography } from "@mui/material";
-
-export const theme = {
-  darkGreen: "#2F4F4F",
-  lightGreen: "#90A974",
-  sage: "#B7C4A7",
-  cream: "#F5F5F1",
-  charcoal: "#2C2C2C",
-};
+import { theme } from "../../styledComponents/globals";
 
 const fadeIn = keyframes`
   from {
@@ -30,8 +23,12 @@ export const SeriesPageContainer = styled.div`
   );
   padding: 4rem 2rem;
   margin: 0;
-  width: 100%;
-  overflow-x: hidden;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   box-sizing: border-box;
 `;
 

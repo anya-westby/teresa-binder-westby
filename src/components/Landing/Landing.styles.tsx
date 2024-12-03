@@ -1,13 +1,6 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-
-export const theme = {
-  darkGreen: "#2F4F4F",
-  lightGreen: "#90A974",
-  sage: "#B7C4A7",
-  cream: "#F5F5F1",
-  charcoal: "#2C2C2C",
-};
+import { theme } from "../../styledComponents/globals";
 
 export const ScrollContainer = styled.div`
   height: 100vh;

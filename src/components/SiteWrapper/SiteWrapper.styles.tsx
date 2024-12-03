@@ -7,6 +7,9 @@ export const Site = styled.div`
   min-height: 100vh;
   background-color: #000000;
   color: #f6f6f6;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 `;
 
 export const SiteOverflow = styled.div`

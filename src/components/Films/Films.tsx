@@ -23,7 +23,7 @@ const Films: React.FC = () => {
 
   return (
     <S.Container>
-      <S.Title>Films</S.Title>
+      <S.Title>Film</S.Title>
       <S.FilterContainer>
         <S.FilterButton
           onClick={() => setSortOrder("reverseChron")}

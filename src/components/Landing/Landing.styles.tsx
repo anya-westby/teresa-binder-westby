@@ -9,6 +9,7 @@ export const ScrollContainer = styled.div`
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
   position: relative;
+  box-sizing: border-box;
   background: ${theme.charcoal};
 
   &::before {
@@ -41,6 +42,10 @@ export const ScrollContainer = styled.div`
     background: rgba(255, 255, 255, 0.3);
     border-radius: 4px;
   }
+
+  @media (max-width: 768px) {
+    scroll-snap-type: y proximity;
+  }
 `;
 
 export const IntroSection = styled.section`
@@ -52,6 +57,12 @@ export const IntroSection = styled.section`
   align-items: center;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const Section = styled.section`
@@ -64,6 +75,14 @@ export const Section = styled.section`
   padding: 2rem;
   gap: 2rem;
   margin: 0;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+    padding: 4rem 1rem;
+    gap: 1rem;
+  }
 `;
 
 export const ImageContainer = styled.div<{ isLeft: boolean }>`
@@ -73,13 +92,30 @@ export const ImageContainer = styled.div<{ isLeft: boolean }>`
   align-items: center;
   justify-content: ${(props) => (props.isLeft ? "flex-end" : "flex-start")};
   opacity: 0;
+  box-sizing: border-box;
+
   transform: translateX(${(props) => (props.isLeft ? "-10%" : "10%")});
   animation: fadeSlide 1s ease-out forwards;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    transform: translateY(-10%);
+    order: 1;
+  }
 
   @keyframes fadeSlide {
     to {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    @keyframes fadeSlide {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 `;
@@ -97,12 +133,10 @@ export const StyledImage = styled.img`
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   }
 
-  ${ImageContainer}:nth-child(odd) & {
-    margin-top: -5%;
-  }
-
-  ${ImageContainer}:nth-child(even) & {
-    margin-bottom: -5%;
+  @media (max-width: 768px) {
+    max-width: 100%;
+    height: auto;
+    margin: 0 !important;
   }
 `;
 
@@ -115,6 +149,14 @@ export const ContentContainer = styled.div<{ isLeft: boolean }>`
   padding: 4rem;
   color: ${theme.cream};
   position: relative;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    align-items: center;
+    text-align: center;
+    order: 2;
+  }
 
   &::before {
     content: "";
@@ -144,11 +186,34 @@ export const Title = styled.h1`
   color: ${theme.cream};
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
   @keyframes fadeUp {
     to {
       opacity: 1;
       transform: translateY(0);
     }
+  }
+`;
+
+export const Description = styled.p<{ isLeft?: boolean }>`
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.2rem;
+  color: ${theme.sage};
+  margin: 1rem 0;
+  max-width: 400px;
+  text-align: ${(props) => (props.isLeft ? "left" : "right")};
+  opacity: 0;
+  animation: fadeUp 0.8s ease-out forwards 0.2s;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 1rem;
+    max-width: 100%;
+    padding: 0 1rem;
   }
 `;
 
@@ -164,6 +229,11 @@ export const NavigationLink = styled(Link)`
   transition: all 0.3s ease;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -173,11 +243,20 @@ export const NavigationLink = styled(Link)`
     left: 0;
     background-color: ${theme.cream};
     transition: width 0.3s ease;
+
+    @media (max-width: 768px) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &:hover {
     color: ${theme.lightGreen};
     transform: translateX(10px);
+
+    @media (max-width: 768px) {
+      transform: translateX(0);
+    }
 
     &::after {
       width: 100%;

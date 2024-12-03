@@ -8,11 +8,15 @@ const fadeIn = keyframes`
 `;
 
 export const Container = styled.div`
-  min-height: 100%;
   width: 100%;
   background: black;
   padding: 6rem;
   color: white;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+  }
 `;
 
 export const Title = styled.h1`
@@ -20,6 +24,12 @@ export const Title = styled.h1`
   font-weight: 300;
   margin-bottom: 6rem;
   letter-spacing: -2px;
+
+  @media (max-width: 768px) {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+    letter-spacing: -1px;
+  }
 `;
 
 export const FilterContainer = styled.div`
@@ -28,6 +38,17 @@ export const FilterContainer = styled.div`
   margin-bottom: 4rem;
   overflow-x: auto;
   padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 `;
 
 export const FilterButton = styled.button<{ active: boolean }>`
@@ -38,6 +59,12 @@ export const FilterButton = styled.button<{ active: boolean }>`
     props.active ? "white" : "rgba(255, 255, 255, 0.1)"};
   color: ${(props) => (props.active ? "black" : "white")};
   font-size: 0.875rem;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
 
   &:hover {
     background: ${(props) =>
@@ -49,6 +76,15 @@ export const GalleryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const GalleryItem = styled.div`
@@ -70,18 +106,33 @@ export const ImageContainer = styled.div`
   ${GalleryItem}:hover & img {
     transform: scale(1.1);
   }
+
+  @media (max-width: 768px) {
+    aspect-ratio: 2/3;
+  }
 `;
 
 export const ItemOverlay = styled.div`
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
-  opacity: 0;
-  transition: opacity 0.5s ease;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  @media (max-width: 768px) {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    padding: 1.5rem;
+  }
 
   ${GalleryItem}:hover & {
     opacity: 1;
@@ -95,18 +146,31 @@ export const ContentWrapper = styled.div`
   ${GalleryItem}:hover & {
     transform: translateY(0);
   }
+
+  @media (max-width: 768px) {
+    transform: translateY(0);
+  }
 `;
 
 export const ItemTitle = styled.h2`
   font-size: 1.875rem;
   font-weight: 300;
   margin-bottom: 0.75rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const ItemRole = styled.p`
   color: rgba(255, 255, 255, 0.7);
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 export const YearContainer = styled.div`
@@ -119,6 +183,10 @@ export const Divider = styled.span`
   width: 3rem;
   height: 1px;
   background: rgba(255, 255, 255, 0.5);
+
+  @media (max-width: 768px) {
+    width: 2rem;
+  }
 `;
 
 export const Year = styled.span`

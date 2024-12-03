@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import {
   ContentContainer,
   ImageContainer,
@@ -9,10 +9,18 @@ import {
   Description,
   StyledLink,
   Container,
+  landingTheme,
 } from "./Landing.styles";
 import { Header, Subtext } from "../../styledComponents/globals";
 
 export default function Landing() {
+  useLayoutEffect(() => {
+    // Force immediate style application
+    document.body.style.background = landingTheme.background;
+    return () => {
+      document.body.style.background = "";
+    };
+  }, []);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const sections = [

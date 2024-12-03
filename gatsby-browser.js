@@ -7,3 +7,19 @@ export const wrapRootElement = ({ element }) => (
     {element}
   </>
 );
+
+export const onClientEntry = () => {
+  // Ensure immediate style application
+  window.addEventListener('load', () => {
+    requestAnimationFrame(() => {
+      const mainElement = document.querySelector('#___gatsby');
+      if (mainElement) {
+        mainElement.style.opacity = '0';
+        requestAnimationFrame(() => {
+          mainElement.style.opacity = '1';
+          mainElement.style.transition = 'opacity 0.1s';
+        });
+      }
+    });
+  });
+};

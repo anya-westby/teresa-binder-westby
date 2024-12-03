@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { theme } from "../../styledComponents/globals";
 
 const slideUp = keyframes`
   from {
@@ -27,17 +28,20 @@ export const ContentWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 8rem;
+  font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
-  color: white;
-  margin-bottom: 4rem;
-  letter-spacing: -2px;
-
+  font-size: 5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  color: ${theme.cream};
   @media (max-width: 768px) {
     font-size: 4rem;
+    margin-bottom: 3rem;
+    letter-spacing: -1px;
+    text-align: center;
   }
 `;
-
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -84,10 +88,16 @@ export const Label = styled.p`
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-size: 0.875rem;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
 `;
 
 export const Value = styled.p`
   color: white;
   font-size: 1.25rem;
   font-weight: 300;
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 400;
 `;

@@ -1,32 +1,59 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "gatsby";
 import { theme } from "../../styledComponents/globals";
 
-export const ScrollContainer = styled.div`
+const landingTheme = {
+  background: "#0f0f0f",
+  text: "#ffffff",
+  accent: "#FF3366",
+  secondary: "#6B7280",
+  overlay: "rgba(15, 15, 15, 0.8)",
+};
+
+export const fadeUp = keyframes`
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeScale = keyframes`
+  from { 
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
+export const Container = styled.div`
   height: 100vh;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
   position: relative;
-  box-sizing: border-box;
-  background: ${theme.charcoal};
+  background: ${landingTheme.background};
 
   &::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      135deg,
-      ${theme.charcoal} 0%,
-      ${theme.darkGreen} 35%,
-      ${theme.sage} 65%,
-      ${theme.charcoal} 100%
-    );
-    opacity: 0.7;
+    inset: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(0, 80, 0, 0.3),
+        /* Dark green with transparency */ transparent 70%
+      ),
+      radial-gradient(
+        circle at bottom left,
+        rgba(0, 0, 0, 0.7),
+        /* Black with slight transparency */ transparent 70%
+      );
     z-index: 0;
   }
 
@@ -35,108 +62,94 @@ export const ScrollContainer = styled.div`
   }
 
   &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
-  }
-
-  @media (max-width: 768px) {
-    scroll-snap-type: y proximity;
-  }
-`;
-
-export const IntroSection = styled.section`
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  box-sizing: border-box;
-  padding: 2rem;
-
-  @media (max-width: 768px) {
-    text-align: center;
   }
 `;
 
 export const Section = styled.section`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   scroll-snap-align: start;
   display: flex;
   position: relative;
   z-index: 1;
   padding: 2rem;
-  gap: 2rem;
-  margin: 0;
+  gap: 4rem;
+  max-width: 1800px;
+  margin: 0 auto;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
-    padding: 4rem 1rem;
-    gap: 1rem;
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+    order: 1;
+  }
+`;
+
+export const IntroSection = styled(Section)`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  gap: 10px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(
+      to top,
+      ${landingTheme.background},
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    gap: 0;
   }
 `;
 
 export const ImageContainer = styled.div<{ isLeft: boolean }>`
-  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: ${(props) => (props.isLeft ? "flex-end" : "flex-start")};
-  opacity: 0;
-  box-sizing: border-box;
-
+  justify-content: center;
   transform: translateX(${(props) => (props.isLeft ? "-10%" : "10%")});
-  animation: fadeSlide 1s ease-out forwards;
+  opacity: 0;
+  animation: ${fadeScale} 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 
   @media (max-width: 768px) {
-    justify-content: center;
-    transform: translateY(-10%);
-    order: 1;
-  }
-
-  @keyframes fadeSlide {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @media (max-width: 768px) {
-    @keyframes fadeSlide {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    transform: translateY(-5%);
+    order: 2;
   }
 `;
 
 export const StyledImage = styled.img`
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  transition: all 0.5s ease;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  filter: brightness(0.9);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 
   &:hover {
     transform: scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-    height: auto;
-    margin: 0 !important;
+    filter: brightness(1.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -146,121 +159,75 @@ export const ContentContainer = styled.div<{ isLeft: boolean }>`
   flex-direction: column;
   justify-content: center;
   align-items: ${(props) => (props.isLeft ? "flex-start" : "flex-end")};
-  padding: 4rem;
-  color: ${theme.cream};
-  position: relative;
-  box-sizing: border-box;
+  padding: 0 4rem;
 
   @media (max-width: 768px) {
     padding: 2rem 1rem;
     align-items: center;
     text-align: center;
-    order: 2;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(
-      circle at center,
-      rgba(0, 0, 0, 0.2) 0%,
-      transparent 70%
-    );
-    z-index: -1;
+    order: 1;
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h2`
   font-family: "Montserrat", sans-serif !important;
-  font-weight: 300;
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s ease-out forwards;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-size: 5rem;
+  font-weight: 200;
   color: ${theme.cream};
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+  opacity: 0;
+  animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
-    text-align: center;
-  }
-
-  @keyframes fadeUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    font-size: 3rem;
   }
 `;
 
-export const Description = styled.p<{ isLeft?: boolean }>`
+export const Description = styled.h2<{ isLeft?: boolean }>`
   font-family: "DM Sans", sans-serif;
   font-size: 1.2rem;
-  color: ${theme.sage};
+  letter-spacing: 5px;
+  line-height: 25px;
+  font-weight: 200;
+  color: ${theme.cream};
+  text-transform: uppercase;
   margin: 1rem 0;
   max-width: 400px;
   text-align: ${(props) => (props.isLeft ? "left" : "right")};
   opacity: 0;
-  animation: fadeUp 0.8s ease-out forwards 0.2s;
+  animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards 0.2s;
 
   @media (max-width: 768px) {
     text-align: center;
-    font-size: 1rem;
-    max-width: 100%;
-    padding: 0 1rem;
+    font-size: 1.1rem;
   }
 `;
 
-export const NavigationLink = styled(Link)`
-  font-family: "DMSans-ExtraLight", sans-serif;
-  font-size: 2rem;
-  color: ${theme.cream};
+export const StyledLink = styled(Link)`
   text-decoration: none;
+  color: ${landingTheme.text};
   position: relative;
-  margin: 1rem 0;
-  letter-spacing: 3px;
-  font-weight: 200;
   transition: all 0.3s ease;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
-  }
 
   &::after {
     content: "";
     position: absolute;
+    bottom: -10px;
+    left: 0;
     width: 0;
     height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: ${theme.cream};
-    transition: width 0.3s ease;
-
-    @media (max-width: 768px) {
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    background: ${landingTheme.accent};
+    transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   &:hover {
-    color: ${theme.lightGreen};
-    transform: translateX(10px);
-
-    @media (max-width: 768px) {
-      transform: translateX(0);
-    }
+    color: ${landingTheme.accent};
 
     &::after {
       width: 100%;
-      background-color: ${theme.lightGreen};
     }
   }
 `;

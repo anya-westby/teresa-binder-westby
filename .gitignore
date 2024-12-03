@@ -1,7 +1,44 @@
+# Dependencies
 node_modules/
-.cache/
-public
-.DS_Store
 .npm
+package-lock.json
+yarn.lock
+
+# Build outputs
+.cache/
+public/
+dist/
+build/
+
+# Logs
+logs/
+*.log
 npm-debug.log*
-logs
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Gatsby specific
+.cache/
+public/

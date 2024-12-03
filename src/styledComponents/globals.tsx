@@ -23,13 +23,13 @@ export const GlobalStyle = createGlobalStyle`
   body {
    margin: 0 !important;     
    padding: 0;
-   display: flex;
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
-]    position: relative;
-  }
+    position: relative;
+}
+  
 
   #___gatsby, #gatsby-focus-wrapper {
     width: 100%;

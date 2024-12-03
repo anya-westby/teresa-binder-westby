@@ -16,19 +16,23 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     padding: 4rem 1rem;
+    justify-content: center;
   }
 `;
 
 export const Title = styled.h1`
-  font-size: 8rem;
+  font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
+  font-size: 5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   margin-bottom: 6rem;
-  letter-spacing: -2px;
 
   @media (max-width: 768px) {
     font-size: 4rem;
     margin-bottom: 3rem;
     letter-spacing: -1px;
+    text-align: center;
   }
 `;
 
@@ -42,6 +46,7 @@ export const FilterContainer = styled.div`
 
   @media (max-width: 768px) {
     margin-bottom: 2rem;
+    justify-content: center;
     padding-bottom: 0.5rem;
     &::-webkit-scrollbar {
       display: none;
@@ -59,6 +64,8 @@ export const FilterButton = styled.button<{ active: boolean }>`
     props.active ? "white" : "rgba(255, 255, 255, 0.1)"};
   color: ${(props) => (props.active ? "black" : "white")};
   font-size: 0.875rem;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
   white-space: nowrap;
 
   @media (max-width: 768px) {

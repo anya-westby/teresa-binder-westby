@@ -1,3 +1,4 @@
+// Ads.styles.js
 import styled from "styled-components";
 import { theme } from "../../styledComponents/globals";
 
@@ -8,42 +9,58 @@ export const Container = styled.div`
   padding: 4rem 6rem;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    padding: 2rem 1rem;
-    height: auto;
-    min-height: 100vh;
+    padding: 2rem;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+  }
+`;
+
+export const LeftSection = styled.div`
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 4rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-right: 0;
+    order: 1;
+  }
+`;
+
+export const RightSection = styled.div`
+  width: 67%;
+  position: relative;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    order: 3;
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    margin-top: 2rem;
   }
 `;
 
 export const Title = styled.h1`
-  font-size: 4rem;
+  font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
-  margin-bottom: 3rem;
-  letter-spacing: -2px;
-  color: white;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  color: ${theme.cream};
 
   @media (max-width: 768px) {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2rem;
+    margin-bottom: 3rem;
     letter-spacing: -1px;
-  }
-`;
-
-export const VideoSection = styled.div`
-  width: 100%;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 0;
-  position: relative;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-
-  @media (max-width: 768px) {
-    padding-top: 75%; /* Slightly taller on mobile for better visibility */
+    text-align: center;
   }
 `;
 
@@ -59,16 +76,14 @@ export const StyledIframe = styled.iframe`
 
 export const ContentSection = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: 2rem;
-  padding-bottom: 2rem;
+  flex-direction: column;
+  gap: 3rem;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 2rem;
-    align-items: stretch;
-    margin-top: 1.5rem;
+    order: 2;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    justify-content: center;
   }
 `;
 
@@ -79,25 +94,32 @@ export const InfoContainer = styled.div`
 
   @media (max-width: 768px) {
     gap: 0.25rem;
+    justify-content: center;
   }
 `;
 
 export const AdTitle = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: white;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 400;
+  font-size: 2rem;
+  color: ${theme.cream};
 
   @media (max-width: 768px) {
-    font-size: 1.75rem;
+    font-size: 1rem;
+    letter-spacing: -1px;
+    text-align: center;
   }
 `;
 
 export const AdRole = styled.p`
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: ${theme.cream};
 
   @media (max-width: 768px) {
     font-size: 1rem;
+    text-align: center;
   }
 `;
 
@@ -109,11 +131,19 @@ export const Divider = styled.div`
 
   @media (max-width: 768px) {
     width: 2rem;
+    align-self: center;
+    margin: 0;
   }
 `;
 
 export const Year = styled.span`
-  color: rgba(255, 255, 255, 0.5);
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
+  font-size: 1rem;
+  color: ${theme.lightGreen};
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 export const Navigation = styled.div`
@@ -136,6 +166,9 @@ export const NavigationButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
+  font-size: 1rem;
 
   @media (max-width: 768px) {
     padding: 0.6rem 1rem;
@@ -156,6 +189,9 @@ export const Counter = styled.span`
   color: rgba(255, 255, 255, 0.5);
   min-width: 60px;
   text-align: center;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
+  font-size: 1rem;
 
   @media (max-width: 768px) {
     min-width: 50px;

@@ -268,7 +268,7 @@ export const galleryData: GalleryData = {
     },
     {
       imgSrc: "https://www.youtube.com/embed/-FbUXkJlFVI?si=F2OTvC4HvKkVvW3I",
-      title: "Chunky “Bragging Rights",
+      title: "Chunky 'Bragging Rights'",
       role: "Campbells Chunky",
       year: "2023",
     },

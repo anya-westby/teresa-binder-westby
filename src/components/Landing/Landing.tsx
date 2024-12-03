@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ContentContainer,
   ImageContainer,
@@ -13,6 +13,8 @@ import {
 import { Header, Subtext } from "../../styledComponents/globals";
 
 export default function Landing() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const sections = [
     {
       title: "Film",
@@ -49,18 +51,19 @@ export default function Landing() {
   ];
 
   useEffect(() => {
-    // Force a reflow on mount
-    window.requestAnimationFrame(() => {
-      document.body.style.opacity = "0.99";
-      setTimeout(() => {
-        document.body.style.opacity = "1";
-      }, 0);
+    // Wait for component to mount before starting animations
+    setIsLoaded(true);
+
+    // Preload images
+    sections.forEach((section) => {
+      const img = new Image();
+      img.src = section.imagePath;
     });
   }, []);
 
   return (
     <Container>
-      <IntroSection>
+      <IntroSection style={{ opacity: isLoaded ? 1 : 0 }}>
         <Header>teresa binder westby</Header>
         <Subtext>costume designer</Subtext>
       </IntroSection>
@@ -69,7 +72,10 @@ export default function Landing() {
         <Section key={index}>
           {section.imageLeft ? (
             <>
-              <ImageContainer isLeft={section.imageLeft}>
+              <ImageContainer
+                isLeft={section.imageLeft}
+                delay={isLoaded ? 0.2 * index : 0}
+              >
                 <StyledImage
                   src={section.imagePath}
                   alt={section.title}
@@ -78,9 +84,9 @@ export default function Landing() {
               </ImageContainer>
               <ContentContainer isLeft={!section.imageLeft}>
                 <StyledLink to={section.link}>
-                  <Title>{section.title}</Title>
+                  <Title delay={0.1 * index}>{section.title}</Title>
                 </StyledLink>
-                <Description isLeft={!section.imageLeft}>
+                <Description isLeft={!section.imageLeft} delay={0.2 * index}>
                   {section.description}
                 </Description>
               </ContentContainer>

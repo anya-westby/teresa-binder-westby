@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { Link } from "gatsby";
 import { theme } from "../../styledComponents/globals";
 
-const landingTheme = {
+export const landingTheme = {
   background: "#0f0f0f",
   text: "#ffffff",
   accent: "#FF3366",
@@ -39,23 +39,12 @@ export const Container = styled.div`
   scroll-snap-type: y mandatory;
   position: relative;
   background: ${landingTheme.background};
-
-  &::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(
-        circle at top right,
-        rgba(0, 80, 0, 0.3),
-        /* Dark green with transparency */ transparent 70%
-      ),
-      radial-gradient(
-        circle at bottom left,
-        rgba(0, 0, 0, 0.7),
-        /* Black with slight transparency */ transparent 70%
-      );
-    z-index: 0;
-  }
+  background-image: radial-gradient(
+      circle at top right,
+      rgba(0, 80, 0, 0.3),
+      transparent 70%
+    ),
+    radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.7), transparent 70%);
 
   &::-webkit-scrollbar {
     width: 8px;

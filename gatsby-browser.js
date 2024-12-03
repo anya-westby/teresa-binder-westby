@@ -9,17 +9,26 @@ export const wrapRootElement = ({ element }) => (
 );
 
 export const onClientEntry = () => {
-  // Ensure immediate style application
-  window.addEventListener('load', () => {
-    requestAnimationFrame(() => {
-      const mainElement = document.querySelector('#___gatsby');
-      if (mainElement) {
-        mainElement.style.opacity = '0';
-        requestAnimationFrame(() => {
-          mainElement.style.opacity = '1';
-          mainElement.style.transition = 'opacity 0.1s';
-        });
-      }
-    });
+  // Ensure styles are loaded before first paint
+  const style = document.createElement('style');
+  style.innerHTML = `
+    html, body {
+      background: #0f0f0f !important;
+      margin: 0;
+      padding: 0;
+    }
+  `;
+  document.head.appendChild(style);
+};
+
+export const onInitialClientRender = () => {
+  // Force immediate repaint
+  requestAnimationFrame(() => {
+    const main = document.querySelector('#___gatsby');
+    if (main) {
+      main.style.display = 'none';
+      main.offsetHeight; // Force reflow
+      main.style.display = '';
+    }
   });
 };

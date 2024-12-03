@@ -1,18 +1,5 @@
 import React, { useState } from "react";
-import {
-  ContentOverlay,
-  FilmsPageContainer,
-  GalleryContainer,
-  GalleryItem,
-  Header,
-  PageTitle,
-  Role,
-  Title,
-  Year,
-  ImageContainer,
-  SortControls,
-  SortButton,
-} from "./Films.styles";
+import * as S from "./Films.styles";
 import { galleryData } from "../GalleryData/GalleryData";
 
 const Films: React.FC = () => {
@@ -20,6 +7,7 @@ const Films: React.FC = () => {
     "chronological" | "reverseChron" | "alphabetical"
   >("chronological");
 
+  // Keep your existing sort logic here
   const filmData = [...galleryData.film].sort((a, b) => {
     switch (sortOrder) {
       case "chronological":
@@ -34,47 +22,49 @@ const Films: React.FC = () => {
   });
 
   return (
-    <FilmsPageContainer>
-      <Header>
-        <PageTitle>Films</PageTitle>
-        <SortControls>
-          <SortButton
-            onClick={() => setSortOrder("chronological")}
-            active={sortOrder === "chronological"}
-          >
-            Oldest First
-          </SortButton>
-          <SortButton
-            onClick={() => setSortOrder("reverseChron")}
-            active={sortOrder === "reverseChron"}
-          >
-            Newest First
-          </SortButton>
-          <SortButton
-            onClick={() => setSortOrder("alphabetical")}
-            active={sortOrder === "alphabetical"}
-          >
-            A-Z
-          </SortButton>
-        </SortControls>
-      </Header>
-      <GalleryContainer>
-        {filmData.map((film, index) => {
-          return (
-            <GalleryItem key={index}>
-              <ImageContainer>
-                <img src={film.imgSrc} alt={film.title} loading="lazy" />
-              </ImageContainer>
-              <ContentOverlay>
-                <Title>{film.title}</Title>
-                <Role>{film.role}</Role>
-                <Year>{film.year}</Year>
-              </ContentOverlay>
-            </GalleryItem>
-          );
-        })}
-      </GalleryContainer>
-    </FilmsPageContainer>
+    <S.Container>
+      <S.Title>Films</S.Title>
+      <S.FilterContainer>
+        <S.FilterButton
+          onClick={() => setSortOrder("reverseChron")}
+          active={sortOrder === "reverseChron"}
+        >
+          Newest First
+        </S.FilterButton>
+        <S.FilterButton
+          onClick={() => setSortOrder("chronological")}
+          active={sortOrder === "chronological"}
+        >
+          Oldest First
+        </S.FilterButton>
+        <S.FilterButton
+          onClick={() => setSortOrder("alphabetical")}
+          active={sortOrder === "alphabetical"}
+        >
+          A-Z
+        </S.FilterButton>
+      </S.FilterContainer>
+
+      <S.GalleryGrid>
+        {filmData.map((film, index) => (
+          <S.GalleryItem key={index}>
+            <S.ImageContainer>
+              <img src={film.imgSrc} alt={film.title} loading="lazy" />
+            </S.ImageContainer>
+            <S.ItemOverlay>
+              <S.ContentWrapper>
+                <S.ItemTitle>{film.title}</S.ItemTitle>
+                <S.ItemRole>{film.role}</S.ItemRole>
+                <S.YearContainer>
+                  <S.Divider />
+                  <S.Year>{film.year}</S.Year>
+                </S.YearContainer>
+              </S.ContentWrapper>
+            </S.ItemOverlay>
+          </S.GalleryItem>
+        ))}
+      </S.GalleryGrid>
+    </S.Container>
   );
 };
 

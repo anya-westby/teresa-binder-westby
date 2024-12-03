@@ -9,81 +9,43 @@ export const theme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Migra-Extrabold';
-    src: url('./assets/fonts/Migra-Extrabold.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    height: 100%;
-  }
-
-  body {
-    font-family: 'DMSans-ExtraLight', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #000000;
-    color: #f6f6f6;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  #___gatsby, #gatsby-focus-wrapper {
-    height: 100%;
-  }
-
-  * {
+  *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
 
-  /* Custom Scrollbar Styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-    background-color: transparent;
+  html {
+    overflow-x: hidden;
+    width: 100%;
   }
 
-  ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
+  body {
+   margin: 0 !important;     
+   padding: 0;
+   display: flex;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+]    position: relative;
   }
 
-  ::-webkit-scrollbar-thumb {
-    background: rgba(85, 3, 98, 0.5);
-    border-radius: 4px;
-    &:hover {
-      background: rgba(85, 3, 98, 0.8);
-    }
-  }
-
-  /* Enable smooth scrolling for supported browsers */
-  @media screen and (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
-
-  /* Ensure proper touch handling on mobile */
-  @supports (-webkit-touch-callout: none) {
-    .scroll-container {
-      -webkit-overflow-scrolling: touch;
-    }
+  #___gatsby, #gatsby-focus-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
   }
 `;
 
 export const Header = styled.span`
   color: ${theme.sage};
-  font-family: "Playfair Display", serif;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 400;
   font-optical-sizing: auto;
   font-size: 5rem;
-  font-weight: 700;
   font-style: bold;
   font-variation-settings: "SOFT" 0, "WONK" 0;
   letter-spacing: 1px;

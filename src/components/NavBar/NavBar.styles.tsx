@@ -5,7 +5,7 @@ import { theme } from "../../styledComponents/globals";
 export const Nav = styled.nav`
   background-color: transparent;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   top: 0;
   left: 0;
   display: flex;

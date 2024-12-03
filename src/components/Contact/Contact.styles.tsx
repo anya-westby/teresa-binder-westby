@@ -1,9 +1,9 @@
 import styled, { keyframes } from "styled-components";
 
-export const fadeIn = keyframes`
+const slideUp = keyframes`
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -13,69 +13,77 @@ export const fadeIn = keyframes`
 
 export const Container = styled.div`
   min-height: 100vh;
-  background: linear-gradient(
-    135deg,
-    ${(props) => props.theme.charcoal} 0%,
-    ${(props) => props.theme.darkGreen} 40%,
-    ${(props) => props.theme.charcoal} 100%
-  );
+  background: black;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 2rem;
 `;
 
-export const ContactCard = styled.div`
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
-  padding: 3rem;
-  max-width: 500px;
+export const ContentWrapper = styled.div`
+  max-width: 800px;
   width: 100%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  animation: ${fadeIn} 0.8s ease forwards;
-  border: 1px solid rgba(183, 196, 167, 0.1);
+  animation: ${slideUp} 0.8s ease-out forwards;
 `;
 
 export const Title = styled.h1`
-  font-family: "Libre Caslon Display", serif;
-  color: ${(props) => props.theme.cream};
-  font-size: 2.5rem;
-  font-weight: 400;
-  margin-bottom: 2rem;
-  text-align: center;
-  letter-spacing: 2px;
+  font-size: 8rem;
+  font-weight: 300;
+  color: white;
+  margin-bottom: 4rem;
+  letter-spacing: -2px;
 `;
 
-export const ContactInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ContactItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
   transition: all 0.3s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
-    transform: translateX(5px);
-  }
-
-  .icon {
-    color: ${(props) => props.theme.sage};
+    transform: translateY(-5px);
   }
 `;
 
-export const ContactText = styled.p`
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: 1px;
-  font-weight: 200;
-  margin: 0;
+export const IconWrapper = styled.div`
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+
+  svg {
+    color: white;
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const Label = styled.p`
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+`;
+
+export const Value = styled.p`
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 300;
 `;

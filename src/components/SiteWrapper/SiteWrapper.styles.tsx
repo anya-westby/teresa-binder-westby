@@ -1,15 +1,19 @@
 import styled from "styled-components";
 
 export const Site = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-  background-color: #000000;
-  color: #f6f6f6;
   width: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  position: relative;
+`;
+
+export const MainContent = styled.main`
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  width: 100vw;
 `;
 
 export const SiteOverflow = styled.div`
@@ -18,4 +22,6 @@ export const SiteOverflow = styled.div`
   flex-direction: column;
   z-index: 1;
   overflow: hidden;
+  width: 100vw;
+  min-height: 100vh;
 `;

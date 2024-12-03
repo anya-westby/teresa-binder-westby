@@ -1,16 +1,10 @@
 import styled from "styled-components";
 import { Link } from "gatsby";
-
-export const theme = {
-  darkGreen: "#2F4F4F",
-  lightGreen: "#90A974",
-  sage: "#B7C4A7",
-  cream: "#F5F5F1",
-  charcoal: "#2C2C2C",
-};
+import { theme } from "../../styledComponents/globals";
 
 export const ScrollContainer = styled.div`
   height: 100vh;
+  width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
@@ -62,12 +56,14 @@ export const IntroSection = styled.section`
 
 export const Section = styled.section`
   height: 100vh;
+  width: 100vw;
   scroll-snap-align: start;
   display: flex;
   position: relative;
   z-index: 1;
   padding: 2rem;
   gap: 2rem;
+  margin: 0;
 `;
 
 export const ImageContainer = styled.div<{ isLeft: boolean }>`
@@ -138,9 +134,9 @@ export const ContentContainer = styled.div<{ isLeft: boolean }>`
 `;
 
 export const Title = styled.h1`
-  font-family: "Migra-Extrabold", serif;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 300;
   font-size: 4rem;
-  font-weight: 700;
   margin-bottom: 1rem;
   opacity: 0;
   transform: translateY(20px);

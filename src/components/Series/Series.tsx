@@ -1,19 +1,6 @@
 import React, { useState } from "react";
-import {
-  ContentOverlay,
-  GalleryContainer,
-  GalleryItem,
-  Header,
-  ImageContainer,
-  PageTitle,
-  Role,
-  SeriesPageContainer,
-  SortButton,
-  SortControls,
-  Title,
-  Year,
-} from "./Series.styles";
 import { galleryData } from "../GalleryData/GalleryData";
+import * as S from "./Series.styles";
 
 const Series: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<
@@ -32,49 +19,50 @@ const Series: React.FC = () => {
         return 0;
     }
   });
-
   return (
-    <SeriesPageContainer>
-      <Header>
-        <PageTitle>Series</PageTitle>
-        <SortControls>
-          <SortButton
-            onClick={() => setSortOrder("chronological")}
-            active={sortOrder === "chronological"}
-          >
-            Oldest First
-          </SortButton>
-          <SortButton
-            onClick={() => setSortOrder("reverseChron")}
-            active={sortOrder === "reverseChron"}
-          >
-            Newest First
-          </SortButton>
-          <SortButton
-            onClick={() => setSortOrder("alphabetical")}
-            active={sortOrder === "alphabetical"}
-          >
-            A-Z
-          </SortButton>
-        </SortControls>
-      </Header>
-      <GalleryContainer>
-        {seriesData.map((show, index) => {
-          return (
-            <GalleryItem key={index}>
-              <ImageContainer>
-                <img src={show.imgSrc} alt={show.title} loading="lazy" />
-              </ImageContainer>
-              <ContentOverlay>
-                <Title>{show.title}</Title>
-                <Role>{show.role}</Role>
-                <Year>{show.year}</Year>
-              </ContentOverlay>
-            </GalleryItem>
-          );
-        })}
-      </GalleryContainer>
-    </SeriesPageContainer>
+    <S.Container>
+      <S.Title>Series</S.Title>
+      <S.FilterContainer>
+        <S.FilterButton
+          onClick={() => setSortOrder("reverseChron")}
+          active={sortOrder === "reverseChron"}
+        >
+          Newest First
+        </S.FilterButton>
+        <S.FilterButton
+          onClick={() => setSortOrder("chronological")}
+          active={sortOrder === "chronological"}
+        >
+          Oldest First
+        </S.FilterButton>
+        <S.FilterButton
+          onClick={() => setSortOrder("alphabetical")}
+          active={sortOrder === "alphabetical"}
+        >
+          A-Z
+        </S.FilterButton>
+      </S.FilterContainer>
+
+      <S.GalleryGrid>
+        {seriesData.map((show, index) => (
+          <S.GalleryItem key={index}>
+            <S.ImageContainer>
+              <img src={show.imgSrc} alt={show.title} loading="lazy" />
+            </S.ImageContainer>
+            <S.ItemOverlay>
+              <S.ContentWrapper>
+                <S.ItemTitle>{show.title}</S.ItemTitle>
+                <S.ItemRole>{show.role}</S.ItemRole>
+                <S.YearContainer>
+                  <S.Divider />
+                  <S.Year>{show.year}</S.Year>
+                </S.YearContainer>
+              </S.ContentWrapper>
+            </S.ItemOverlay>
+          </S.GalleryItem>
+        ))}
+      </S.GalleryGrid>
+    </S.Container>
   );
 };
 

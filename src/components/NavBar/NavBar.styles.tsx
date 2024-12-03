@@ -1,18 +1,11 @@
 import { Link } from "gatsby";
 import styled from "styled-components";
-
-export const theme = {
-  darkGreen: "#2F4F4F",
-  lightGreen: "#90A974",
-  sage: "#B7C4A7",
-  cream: "#F5F5F1",
-  charcoal: "#2C2C2C",
-};
+import { theme } from "../../styledComponents/globals";
 
 export const Nav = styled.nav`
   background-color: transparent;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   top: 0;
   left: 0;
   display: flex;

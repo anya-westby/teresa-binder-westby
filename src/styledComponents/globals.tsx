@@ -10,7 +10,6 @@ export const theme = {
 
 export const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
@@ -24,16 +23,15 @@ export const GlobalStyle = createGlobalStyle`
    margin: 0 !important;     
    padding: 0;
     width: 100%;
-    min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    position: relative;
+    position: relative;    box-sizing: border-box;
+
 }
   
 
   #___gatsby, #gatsby-focus-wrapper {
     width: 100%;
-    min-height: 100vh;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -90,7 +88,6 @@ export const ScrollContainer = styled.div`
 `;
 
 export const Section = styled.section`
-  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;

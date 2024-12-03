@@ -8,8 +8,9 @@ import { Nav, NavLink, NavLinkContainer, NavToggle } from "./NavBar.styles";
 export const active_screen = {
   home: "Home",
   contact: "Contact",
-  films: "Films",
+  films: "Film",
   series: "Series",
+  ads: "Ads",
 };
 
 export default function NavBar({ activeItem }: { activeItem: string }) {
@@ -49,13 +50,19 @@ export default function NavBar({ activeItem }: { activeItem: string }) {
           to="/films"
           className={activeItem === active_screen.films ? "active" : ""}
         >
-          Films
+          Film
         </NavLink>
         <NavLink
           to="/series"
           className={activeItem === active_screen.series ? "active" : ""}
         >
           Series
+        </NavLink>
+        <NavLink
+          to="/ads"
+          className={activeItem === active_screen.ads ? "active" : ""}
+        >
+          Ads
         </NavLink>
         <NavLink
           to="/contact"

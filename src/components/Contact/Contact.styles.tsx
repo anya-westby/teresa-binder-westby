@@ -32,6 +32,10 @@ export const Title = styled.h1`
   color: white;
   margin-bottom: 4rem;
   letter-spacing: -2px;
+
+  @media (max-width: 768px) {
+    font-size: 4rem;
+  }
 `;
 
 export const Grid = styled.div`

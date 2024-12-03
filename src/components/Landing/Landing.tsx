@@ -15,12 +15,16 @@ import { Header, Subtext } from "../../styledComponents/globals";
 
 export default function Landing() {
   useLayoutEffect(() => {
-    // Force immediate style application
-    document.body.style.background = landingTheme.background;
+    if (typeof window !== "undefined") {
+      document.body.style.background = landingTheme.background;
+    }
     return () => {
-      document.body.style.background = "";
+      if (typeof window !== "undefined") {
+        document.body.style.background = "";
+      }
     };
   }, []);
+
   const [isLoaded, setIsLoaded] = useState(false);
 
   const sections = [

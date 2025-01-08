@@ -36,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
     background: #000000;
   }

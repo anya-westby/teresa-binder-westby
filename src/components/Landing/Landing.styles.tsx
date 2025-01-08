@@ -32,7 +32,9 @@ const fadeScale = keyframes`
   }
 `;
 export const Container = styled.div`
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
@@ -45,19 +47,6 @@ export const Container = styled.div`
       transparent 70%
     ),
     radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.7), transparent 70%);
-
-  // &::-webkit-scrollbar {
-  //   width: 8px;
-  // }
-
-  // &::-webkit-scrollbar-track {
-  //   background: rgba(255, 255, 255, 0.05);
-  // }
-
-  // &::-webkit-scrollbar-thumb {
-  //   background: rgba(255, 255, 255, 0.1);
-  //   border-radius: 4px;
-  // }
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000;

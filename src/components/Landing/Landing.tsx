@@ -14,17 +14,6 @@ import {
 import { Header, Subtext } from "../../styledComponents/globals";
 
 export default function Landing() {
-  useLayoutEffect(() => {
-    if (typeof window !== "undefined") {
-      document.body.style.background = landingTheme.background;
-    }
-    return () => {
-      if (typeof window !== "undefined") {
-        document.body.style.background = "";
-      }
-    };
-  }, []);
-
   const [isLoaded, setIsLoaded] = useState(false);
 
   const sections = [

@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Site = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   overflow-x: hidden;

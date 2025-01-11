@@ -11,11 +11,12 @@ export const SiteWrapper = ({
   children: React.ReactNode;
 }) => {
   return (
-    <Site>
+    <>
       <NavBar activeItem={activeItem} />
-
-      <SiteOverflow>{children}</SiteOverflow>
-      {/* <Footer activeItem={activeItem} /> */}
-    </Site>
+      <Site>
+        <SiteOverflow>{children}</SiteOverflow>
+        {/* <Footer activeItem={activeItem} /> */}
+      </Site>
+    </>
   );
 };

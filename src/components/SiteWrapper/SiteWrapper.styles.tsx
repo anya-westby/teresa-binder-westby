@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const Site = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  position: relative;
-  box-sizing: border-box;
+  justify-content: space-between;
+  min-height: 100vh;
+
+  // margin: 0;
+  // padding: 0;
+  // overflow-x: hidden;
+  // box-sizing: border-box;
 `;
 
 export const SiteOverflow = styled.div`
@@ -17,6 +18,6 @@ export const SiteOverflow = styled.div`
   flex-direction: column;
   z-index: 1;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
+  // margin: 0;
+  // padding: 0;
 `;

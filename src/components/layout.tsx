@@ -1,22 +1,24 @@
 import * as React from "react";
 import { GlobalStyle } from "../styledComponents/globals";
 import { useEffect, useState } from "react";
+import { Loading } from "./Landing/Loading";
 
 const Layout = ({ children }) => {
-  const [mounted, setMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Small delay to ensure smooth transition
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
       <GlobalStyle />
-      <main
-        style={{ opacity: mounted ? 1 : 0, transition: "opacity 0.3s ease" }}
-      >
-        {children}
-      </main>
+      {isLoading ? <Loading /> : <main>{children}</main>}
     </>
   );
 };

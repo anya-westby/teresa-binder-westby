@@ -31,40 +31,27 @@ export const GlobalStyle = createGlobalStyle`
     background: #000000;
     color: #ffffff;
   }
-
-  html {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    min-height: 100vh;
-    overflow-x: hidden;
-    background: #000000;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
-    background: #000000;
+ html, body {
+    background: #0f0f0f !important;
     color: #ffffff;
-    line-height: 1;
-    overflow-x: hidden;
-  }
-
-  #gatsby-focus-wrapper {
-    width: 100%;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    background: #000000;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  #___gatsby {
+  #___gatsby,
+  #gatsby-focus-wrapper {
+    min-height: 100vh;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    background: #000000;
+  }
+
+  /* Add this to ensure content fades in smoothly */
+  #gatsby-focus-wrapper {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
   }
 `;
 

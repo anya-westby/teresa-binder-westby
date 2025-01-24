@@ -355,5 +355,11 @@ export const galleryData: GalleryData = {
       role: "Philadelphia 76ers",
       year: "2015",
     },
+    {
+      imgSrc: 'https://www.youtube.com/embed/ATynH1CyUrU?si=GXfA4MZHM__NXtlx',
+      title: 'Are you stuck in the Past?',
+      role: 'GIANT',
+      year: '2023'
+    }
   ],
 };

@@ -121,7 +121,13 @@ export const ImageContainer = styled.div`
 export const ItemOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -157,10 +163,10 @@ export const ContentWrapper = styled.div`
     transform: translateY(0);
   }
 `;
-
 export const ItemTitle = styled.h2`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
   font-size: 1.875rem;
-  font-weight: 300;
   margin-bottom: 0.75rem;
 
   @media (max-width: 768px) {
@@ -170,6 +176,8 @@ export const ItemTitle = styled.h2`
 `;
 
 export const ItemRole = styled.p`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
@@ -196,5 +204,6 @@ export const Divider = styled.span`
 `;
 
 export const Year = styled.span`
+  font-family: "Montserrat", sans-serif;
   color: rgba(255, 255, 255, 0.5);
 `;

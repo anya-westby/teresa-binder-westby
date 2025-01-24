@@ -42,6 +42,27 @@ export const Title = styled.h1`
     text-align: center;
   }
 `;
+
+export const ContactLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:focus {
+    outline: none;
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+`;
+
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -53,15 +74,17 @@ export const Grid = styled.div`
 `;
 
 export const ContactItem = styled.div`
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
   padding: 2rem;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-5px);
+  ${ContactLink}:hover & {
+    background: rgba(255, 255, 255, 0.1);
   }
 `;
 

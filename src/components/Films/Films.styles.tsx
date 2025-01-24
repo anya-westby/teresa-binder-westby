@@ -79,10 +79,104 @@ export const FilterButton = styled.button<{ active: boolean }>`
   }
 `;
 
+export const SectionHeader = styled.h2`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 2.5rem;
+  color: white;
+  margin: 4rem 0 2rem;
+  letter-spacing: 0.5px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin: 3rem 0 1.5rem;
+    text-align: center;
+  }
+`;
+
+export const SectionHeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 6rem 0 3rem;
+  width: 100%;
+
+  &:first-of-type {
+    margin-top: 3rem;
+  }
+`;
+
+export const SectionHeaderLine = styled.div`
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to var(--direction, right),
+    transparent,
+    rgba(255, 255, 255, 0.3)
+  );
+
+  &:first-child {
+    --direction: right;
+  }
+
+  &:last-child {
+    --direction: left;
+  }
+`;
+
+export const SectionHeaderContent = styled.div`
+  padding: 0 2rem;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    left: 0.5rem;
+  }
+
+  &::after {
+    right: 0.5rem;
+  }
+`;
+
+export const SectionHeaderText = styled.h2`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 2.5rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+  padding: 0 1rem;
+  text-align: center;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+    letter-spacing: 2px;
+    white-space: normal;
+  }
+`;
+
+// Update the margin on GalleryGrid
 export const GalleryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
+  margin-bottom: 2rem;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -122,7 +216,13 @@ export const ImageContainer = styled.div`
 export const ItemOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.8) 30%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -142,7 +242,7 @@ export const ItemOverlay = styled.div`
   }
 
   ${GalleryItem}:hover & {
-    opacity: 1;
+    opacity: 1.5;
   }
 `;
 
@@ -160,8 +260,9 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ItemTitle = styled.h2`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
   font-size: 1.875rem;
-  font-weight: 300;
   margin-bottom: 0.75rem;
 
   @media (max-width: 768px) {
@@ -171,6 +272,8 @@ export const ItemTitle = styled.h2`
 `;
 
 export const ItemRole = styled.p`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
   font-size: 1.125rem;
   margin-bottom: 0.5rem;
@@ -197,5 +300,6 @@ export const Divider = styled.span`
 `;
 
 export const Year = styled.span`
+  font-family: "Montserrat", sans-serif;
   color: rgba(255, 255, 255, 0.5);
 `;

@@ -3,6 +3,7 @@ interface GalleryItem {
   title: string;
   role: string;
   year: string;
+  rolePriority?: number;
 }
 
 interface GalleryData {
@@ -10,6 +11,13 @@ interface GalleryData {
   series: GalleryItem[];
   ads: GalleryItem[];
 }
+
+const ROLE_PRIORITIES = {
+  COSTUME_DESIGNER: 1,
+  ASSISTANT_COSTUME_DESIGNER: 2,
+  PERSONAL_COSTUMER: 3,
+  OTHER: 4
+} as const;
 
 export const galleryData: GalleryData = {
   film: [
@@ -19,6 +27,7 @@ export const galleryData: GalleryData = {
       title: "Apollo 11",
       role: "Wardrobe Supervisor [as Teresa Binder]",
       year: "1996",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -26,6 +35,7 @@ export const galleryData: GalleryData = {
       title: "Beloved",
       role: "Costumer",
       year: "1998",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -33,13 +43,7 @@ export const galleryData: GalleryData = {
       title: "Blade",
       role: "Costumer [as Teresa Binder]",
       year: "1998",
-    },
-    {
-      imgSrc:
-        "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FBladeII.jpg?alt=media&token=123eb42f-7f84-4818-a32f-8b753832276d",
-      title: "Blade II",
-      role: "Costumer [as Teresa Binder]",
-      year: "2002",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -47,6 +51,7 @@ export const galleryData: GalleryData = {
       title: "Concrete Cowboy",
       role: "Costume Designer",
       year: "2020",
+      rolePriority: 1
     },
     {
       imgSrc:
@@ -54,6 +59,7 @@ export const galleryData: GalleryData = {
       title: "Creed",
       role: "Assistant Costume Designer",
       year: "2015",
+      rolePriority: 2
     },
     {
       imgSrc:
@@ -61,6 +67,7 @@ export const galleryData: GalleryData = {
       title: "Dead Man Down",
       role: "Key Costumer [as Teresa Binder]",
       year: "2013",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -68,6 +75,7 @@ export const galleryData: GalleryData = {
       title: "Equity",
       role: "Costume Designer [as Teresa Binder]",
       year: "2016",
+      rolePriority: 1
     },
     {
       imgSrc:
@@ -75,6 +83,7 @@ export const galleryData: GalleryData = {
       title: "Glass",
       role: "Assistant Costume Designer",
       year: "2019",
+      rolePriority: 2
     },
     {
       imgSrc:
@@ -82,6 +91,7 @@ export const galleryData: GalleryData = {
       title: "How Do You Know",
       role: "Costumer",
       year: "2010",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -89,6 +99,7 @@ export const galleryData: GalleryData = {
       title: "Jersey Girl",
       role: "Key Costumer",
       year: "2004",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -96,6 +107,7 @@ export const galleryData: GalleryData = {
       title: "Law Abiding Citizen",
       role: "Costumer",
       year: "2009",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -103,6 +115,7 @@ export const galleryData: GalleryData = {
       title: "Limitless",
       role: "Key Costumer",
       year: "2011",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -110,6 +123,7 @@ export const galleryData: GalleryData = {
       title: "The Mighty Macs",
       role: "Costume Designer",
       year: "2009",
+      rolePriority: 1
     },
     {
       imgSrc:
@@ -117,6 +131,7 @@ export const galleryData: GalleryData = {
       title: "Money Train",
       role: "Costumer",
       year: "1995",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -124,6 +139,7 @@ export const galleryData: GalleryData = {
       title: "National Treasure",
       role: "Set Costumer [as Teresa Binder]",
       year: "2004",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -131,6 +147,7 @@ export const galleryData: GalleryData = {
       title: "Shadowboxer",
       role: "Costume Designer",
       year: "2005",
+      rolePriority: 1
     },
     {
       imgSrc:
@@ -138,6 +155,7 @@ export const galleryData: GalleryData = {
       title: "Signs",
       role: "Key Costumer",
       year: "2002",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -145,13 +163,16 @@ export const galleryData: GalleryData = {
       title: "Silver Linings Playbook",
       role: "Assistant Costume Designer",
       year: "2012",
+      rolePriority: 2
     },
     {
       imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FSixth%20Sense.jpg?alt=media&token=362b1e29-085f-4e79-a7c2-857f0415e823",
       title: "The Sixth Sense",
-      role: "Costumer, Mr.Willis [as Teresa Binder]",
+      role: "Personal Costumer, Bruce Willis [as Teresa Binder]",
       year: "1999",
+      rolePriority: 3
+
     },
     {
       imgSrc:
@@ -159,6 +180,7 @@ export const galleryData: GalleryData = {
       title: "Split",
       role: "Assistant Costume Designer [as Teresa Binder]",
       year: "2016",
+      rolePriority: 2
     },
     {
       imgSrc:
@@ -166,13 +188,15 @@ export const galleryData: GalleryData = {
       title: "Tenure",
       role: "Costume Designer",
       year: "2008",
+      rolePriority: 1
     },
     {
       imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FThe%20Benefactor.jpg?alt=media&token=74cd8ad7-627d-44e3-9aaf-474e0d51d81e",
       title: "The Benefactor",
-      role: "Costumer, Mr.Gere",
+      role: "Personal Costumer, Richard Gere",
       year: "2015",
+      rolePriority: 3
     },
     {
       imgSrc:
@@ -180,6 +204,7 @@ export const galleryData: GalleryData = {
       title: "The Chamber",
       role: "Set Costumer [as Teresa Binder]",
       year: "1996",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -187,6 +212,7 @@ export const galleryData: GalleryData = {
       title: "The Great White Hype",
       role: "Womens Key Set Costumer [as Teresa Binder]",
       year: "1996",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -194,6 +220,7 @@ export const galleryData: GalleryData = {
       title: "The Lovely Bones",
       role: "Costume Coordinator",
       year: "2009",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -201,6 +228,7 @@ export const galleryData: GalleryData = {
       title: "The Visit",
       role: "Key Costumer",
       year: "2015",
+      rolePriority: 4
     },
     {
       imgSrc:
@@ -208,13 +236,16 @@ export const galleryData: GalleryData = {
       title: "The Wedding Singer",
       role: "Costumer",
       year: "1998",
+      rolePriority: 4
     },
     {
       imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FThe%20Woodsman.jpg?alt=media&token=49cbfe2d-692c-4114-92fa-36345fa87f8a",
-      title: "Thw Woodsman",
+      title: "The Woodsman",
       role: "Costume Supervisor: Philadelphia",
       year: "2004",
+      rolePriority: 4
+
     },
     {
       imgSrc:
@@ -222,21 +253,68 @@ export const galleryData: GalleryData = {
       title: "Transformers: Revenge of the Fallen",
       role: "Costumer [as Teresa Binder]",
       year: "2009",
+      rolePriority: 4
+
     },
     {
       imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FUnbreakable.jpg?alt=media&token=d05d021a-9d2b-43b3-93a3-a5982f590375",
       title: "Unbreakable",
-      role: "Costumer, Mr.Willis [as Teresa Binder]",
+      role: "Personal Costumer, Bruce Willis [as Teresa Binder]",
       year: "2000",
+      rolePriority: 3
     },
     {
-      imgSrc:
-        "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FWhite%20Men%20Cant%20Jump.jpeg?alt=media&token=0cc04555-9580-45f5-9905-3ca2d521090d",
-      title: "White Men Cant Jump",
-      role: "Costumer",
-      year: "1992",
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FCreed%20II.jpeg?alt=media&token=702a01a7-cd81-4f16-8e34-03525b963f61',
+      title: 'Creed II',
+      role: 'Assistant Costume Designer',
+      year: '2018',
+      rolePriority: 2
     },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FPlay%20It%20To%20The%20Bone.jpg?alt=media&token=3652fd7c-f907-455f-912d-302872948045',
+      title: 'Play It to the Bone',
+      role: 'Personal Costumer, Woody Harrelson',
+      year: '1999',
+      rolePriority: 3
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FRocky%20Balboa.png?alt=media&token=d3010335-0f73-42a2-a5c1-ccb5752d1df7',
+      title: 'Rocky Balboa',
+      role: 'Personal Costumer, Sylvester Stallone',
+      year: '2006',
+      rolePriority: 3
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FLord%20of%20Illusions.jpeg?alt=media&token=8bc4becc-1199-42ad-816c-3e947446d0b9',
+      title: 'Lord of Illusions',
+      role: 'Set Costumer',
+      year: '1995',
+      rolePriority: 4
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FThe%20Fantasticks.jpeg?alt=media&token=75058939-afdd-47f9-a734-b2b16b613cb6',
+      title: 'The Fantasticks',
+      role: 'Set Costumer',
+      year: '1995',
+      rolePriority: 4
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FLady%20In%20The%20Water.jpg?alt=media&token=eeecf6ec-dd5e-4518-8fe3-a71b74a9a683',
+      title: 'Lady in the Water',
+      role: 'Shopper',
+      year: '2006',
+      rolePriority: 4
+
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FLike%20Mike.jpg?alt=media&token=f66d6d94-b93d-4754-bbbb-03537ec51b84',
+      title: 'Like Mike',
+      role: 'Costumer',
+      year: '2002',
+      rolePriority: 4
+
+    }
   ],
   series: [
     {
@@ -244,7 +322,8 @@ export const galleryData: GalleryData = {
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FLioness.jpg?alt=media&token=6159b434-b5d4-46a6-bfe4-bc6d78f0bab7",
       title: "Lioness",
       role: "Costume Designer",
-      year: "2022-2024",
+      year: "2022-2023",
+      rolePriority: 1
     },
     {
       imgSrc:
@@ -252,18 +331,56 @@ export const galleryData: GalleryData = {
       title: "Servant",
       role: "Assistant Costume Designer",
       year: "2019-2021",
+      rolePriority: 2
     },
-    // {   imgSrc: '',
-    //     title: '',
-    //     role: '',
-    //     year: ''
-    // },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FLioness%20Season%202.jpg?alt=media&token=69c07fcc-57e4-48fb-989e-1dc5341a739d',
+      title: 'Lioness Season 2',
+      role: 'Costume Designer',
+      year: '2023-2024',
+      rolePriority: 1
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FBel%20Air.jpg?alt=media&token=864f56b0-010a-4a2e-8bdf-c0f5550f04fd',
+      title: 'Bel-Air',
+      role: 'Assistant Costume Designer',
+      year: '2022',
+      rolePriority: 2
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FIs%20Always%20Sunny.png?alt=media&token=57367b3e-b231-4b66-b59a-7cba6854a86a',
+      title: 'It\'s Always Sunny in Philadelphia',
+      role: 'Key Costumer: Philadelphia',
+      year: '2005-2015',
+      rolePriority: 3
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FDownward%20dog.jpeg?alt=media&token=cba132a4-ea43-400c-8b78-bd274f89bb45',
+      title: 'Downward Dog',
+      role: 'Assistant Costume Designer',
+      year: '2017',
+      rolePriority: 2
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FCold%20Case.jpg?alt=media&token=4e1c7618-8a81-47f4-8d95-ddc80bad9a5f',
+      title: 'Cold Case',
+      role: 'Key Costumer',
+      year: '2003-2010',
+      rolePriority: 3
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FMare%20of%20Easttown.jpg?alt=media&token=8926a010-f841-4109-83cd-e3d4dad574e4',
+      title: 'Mare of Easttown',
+      role: 'Shopper',
+      year: '2021',
+      rolePriority: 3
+    }
   ],
   ads: [
     {
-      imgSrc: "https://www.youtube.com/embed/IM096SebXlw?si=MMvLgFU3g0SOFOZY",
-      title: "Chunky Soup: Spicy & Bold with Jason Kelce (:15)",
-      role: "Campbells Chunky",
+      imgSrc: "https://www.youtube.com/embed/UAiFKN1dyj8?si=Pxv9KuUALz42rH1I",
+      title: "Designed with ♡: In-Home WiFi",
+      role: "Comcast",
       year: "2024",
     },
     {
@@ -273,10 +390,29 @@ export const galleryData: GalleryData = {
       year: "2023",
     },
     {
-      imgSrc: "https://www.youtube.com/embed/UAiFKN1dyj8?si=Pxv9KuUALz42rH1I",
-      title: "Designed with ♡: In-Home WiFi",
-      role: "Comcast",
-      year: "2024",
+      imgSrc: 'https://www.youtube.com/embed/ATynH1CyUrU?si=GXfA4MZHM__NXtlx',
+      title: 'Are you stuck in the Past?',
+      role: 'GIANT',
+      year: '2023'
     },
+    {
+      imgSrc: "https://www.youtube.com/embed/zPNqMV3OGKk?si=-2_cvSTXnia-cQeW",
+      title: "Caesar's Atlantic City",
+      role: "Caesars Atlantic City Hotel & Casino",
+      year: "2023",
+    },
+    {
+      imgSrc: "https://www.youtube.com/embed/Ks7pkVjx-04?si=cPl1uVM22bKUPcFn",
+      title: "The Official Chip of the NFL",
+      role: "Tostitos",
+      year: "2018",
+    },
+    {
+      imgSrc: "https://www.youtube.com/embed/5U3VcB0_Rws?si=hVFN88gacYYEqiGh",
+      title: "Since 1776",
+      role: "Philadelphia 76ers",
+      year: "2015",
+    },
+
   ],
 };

@@ -79,14 +79,36 @@ export const FilterButton = styled.button<{ active: boolean }>`
   }
 `;
 
+export const SectionHeader = styled.h2`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 2.5rem;
+  color: white;
+  margin: 4rem 0 2rem;
+  letter-spacing: 0.5px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin: 3rem 0 1.5rem;
+    text-align: center;
+  }
+`;
+
+// Update the existing GalleryGrid component with this margin
 export const GalleryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 2rem;
+  margin-bottom: 4rem;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
+    margin-bottom: 2rem;
   }
 
   @media (max-width: 480px) {

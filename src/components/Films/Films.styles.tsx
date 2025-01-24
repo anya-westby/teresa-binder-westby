@@ -10,7 +10,7 @@ const fadeIn = keyframes`
 export const Container = styled.div`
   width: 100%;
   background: black;
-  padding: 6rem;
+  padding: 4rem 6rem;
   color: white;
   box-sizing: border-box;
 
@@ -23,13 +23,13 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
-  font-size: 5rem;
+  font-size: 2rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
 
   @media (max-width: 768px) {
-    font-size: 4rem;
+    font-size: 3rem;
     margin-bottom: 3rem;
     letter-spacing: -1px;
     text-align: center;
@@ -165,7 +165,7 @@ export const SectionHeaderText = styled.h2`
   white-space: nowrap;
 
   @media (max-width: 768px) {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     letter-spacing: 2px;
     white-space: normal;
   }

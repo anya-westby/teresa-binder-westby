@@ -50,10 +50,10 @@ export const RightSection = styled.div`
 export const Title = styled.h1`
   font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
-  font-size: 3rem;
+  font-size: 2rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   color: ${theme.cream};
 
   @media (max-width: 768px) {

@@ -18,13 +18,13 @@ const Contact: React.FC = () => {
             </S.ContactItem>
           </S.ContactLink>
 
-          <S.ContactLink href="tel:+16108837068">
+          <S.ContactLink href="tel:+16108833387">
             <S.ContactItem>
               <S.IconWrapper>
                 <Phone />
               </S.IconWrapper>
               <S.Label>Phone</S.Label>
-              <S.Value>(610) 883-7068</S.Value>
+              <S.Value>(610) 883-3387</S.Value>
             </S.ContactItem>
           </S.ContactLink>
         </S.Grid>

@@ -89,9 +89,9 @@ export const galleryData: GalleryData = {
       imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FHow%20do%20you%20Know.jpeg?alt=media&token=932f9692-8836-4165-9712-716b62a56531",
       title: "How Do You Know",
-      role: "Costumer",
+      role: "Personal Costumer, Reese Witherspoon",
       year: "2010",
-      rolePriority: 4
+      rolePriority: 3
     },
     {
       imgSrc:
@@ -113,9 +113,9 @@ export const galleryData: GalleryData = {
       imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FLimitless.jpg?alt=media&token=f4b97d16-73bd-474b-926a-826277eb78b5",
       title: "Limitless",
-      role: "Key Costumer",
+      role: "Personal Costumer, Robert De Niro",
       year: "2011",
-      rolePriority: 4
+      rolePriority: 3
     },
     {
       imgSrc:
@@ -343,7 +343,7 @@ export const galleryData: GalleryData = {
     {
       imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FBel%20Air.jpg?alt=media&token=864f56b0-010a-4a2e-8bdf-c0f5550f04fd',
       title: 'Bel-Air',
-      role: 'Assistant Costume Designer',
+      role: 'Assistant Costume Designer: Philadelphia',
       year: '2022',
       rolePriority: 2
     },
@@ -364,7 +364,7 @@ export const galleryData: GalleryData = {
     {
       imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FCold%20Case.jpg?alt=media&token=4e1c7618-8a81-47f4-8d95-ddc80bad9a5f',
       title: 'Cold Case',
-      role: 'Key Costumer',
+      role: 'Key Costumer: Philadelphia',
       year: '2003-2010',
       rolePriority: 3
     },

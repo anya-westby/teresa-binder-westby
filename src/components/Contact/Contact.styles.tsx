@@ -34,7 +34,8 @@ export const Title = styled.h1`
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 6rem;
-  color: ${theme.cream};
+  text-align: center;
+  color: ${theme.sage};
   @media (max-width: 768px) {
     font-size: 4rem;
     margin-bottom: 3rem;

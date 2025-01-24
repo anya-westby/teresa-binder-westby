@@ -272,7 +272,7 @@ export const galleryData: GalleryData = {
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FLioness.jpg?alt=media&token=6159b434-b5d4-46a6-bfe4-bc6d78f0bab7",
       title: "Lioness",
       role: "Costume Designer",
-      year: "2022-2024",
+      year: "2022-2023",
     },
     {
       imgSrc:
@@ -281,6 +281,43 @@ export const galleryData: GalleryData = {
       role: "Assistant Costume Designer",
       year: "2019-2021",
     },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FLioness%20Season%202.jpg?alt=media&token=69c07fcc-57e4-48fb-989e-1dc5341a739d',
+      title: 'Lioness Season 2',
+      role: 'Costume Designer',
+      year: '2023-2024'
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FBel%20Air.jpg?alt=media&token=864f56b0-010a-4a2e-8bdf-c0f5550f04fd',
+      title: 'Bel-Air',
+      role: 'Assistant Costume Designer',
+      year: '2022'
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FIs%20Always%20Sunny.png?alt=media&token=57367b3e-b231-4b66-b59a-7cba6854a86a',
+      title: 'It\'s Always Sunny in Philadelphia',
+      role: 'Key Costumer: Philadelphia',
+      year: '2005-2015',
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FDownward%20dog.jpeg?alt=media&token=cba132a4-ea43-400c-8b78-bd274f89bb45',
+      title: 'Downward Dog',
+      role: 'Assistant Costume Designer',
+      year: '2017'
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FCold%20Case.jpg?alt=media&token=4e1c7618-8a81-47f4-8d95-ddc80bad9a5f',
+      title: 'Cold Case',
+      role: 'Key Costumer',
+      year: '2003-2010',
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FMare%20of%20Easttown.jpg?alt=media&token=8926a010-f841-4109-83cd-e3d4dad574e4',
+      title: 'Mare of Easttown',
+      role: 'Shopper',
+      year: '2021'
+    }
+
     // {   imgSrc: '',
     //     title: '',
     //     role: '',

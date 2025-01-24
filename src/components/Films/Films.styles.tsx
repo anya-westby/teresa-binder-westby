@@ -27,6 +27,7 @@ export const Title = styled.h1`
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 2rem;
+  color: ${theme.sage};
 
   @media (max-width: 768px) {
     font-size: 3rem;

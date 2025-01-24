@@ -12,7 +12,7 @@ export const sections = [
       link: "/series",
       description: "Creating character evolution across episodic storytelling",
       imagePath:
-        "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/landing%2FUntitled%20(2).png?alt=media&token=5737013d-7358-48e4-bfa4-132ba3fc39e6",
+        "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/landing%2FSeries.png?alt=media&token=6fd11fc9-7669-4ff4-9f19-a6b3f5d243c2",
       imageLeft: false,
     },
     {

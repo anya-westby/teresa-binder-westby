@@ -36,13 +36,6 @@ export const galleryData: GalleryData = {
     },
     {
       imgSrc:
-        "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FBladeII.jpg?alt=media&token=123eb42f-7f84-4818-a32f-8b753832276d",
-      title: "Blade II",
-      role: "Costumer [as Teresa Binder]",
-      year: "2002",
-    },
-    {
-      imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FConcrete%20Cowboy.jpg?alt=media&token=9efe815b-f4c9-405a-b439-cb4bb01aded8",
       title: "Concrete Cowboy",
       role: "Costume Designer",
@@ -212,7 +205,7 @@ export const galleryData: GalleryData = {
     {
       imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FThe%20Woodsman.jpg?alt=media&token=49cbfe2d-692c-4114-92fa-36345fa87f8a",
-      title: "Thw Woodsman",
+      title: "The Woodsman",
       role: "Costume Supervisor: Philadelphia",
       year: "2004",
     },
@@ -227,16 +220,51 @@ export const galleryData: GalleryData = {
       imgSrc:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FUnbreakable.jpg?alt=media&token=d05d021a-9d2b-43b3-93a3-a5982f590375",
       title: "Unbreakable",
-      role: "Costumer, Mr.Willis [as Teresa Binder]",
+      role: "Personal Costumer, Bruce Willis [as Teresa Binder]",
       year: "2000",
     },
     {
-      imgSrc:
-        "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FWhite%20Men%20Cant%20Jump.jpeg?alt=media&token=0cc04555-9580-45f5-9905-3ca2d521090d",
-      title: "White Men Cant Jump",
-      role: "Costumer",
-      year: "1992",
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FCreed%20II.jpeg?alt=media&token=702a01a7-cd81-4f16-8e34-03525b963f61',
+      title: 'Creed II',
+      role: 'Assistant Costume Designer',
+      year: '2018'
     },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FPlay%20It%20To%20The%20Bone.jpg?alt=media&token=3652fd7c-f907-455f-912d-302872948045',
+      title: 'Play It to the Bone',
+      role: 'Personal Costumer, Woody Harrelson',
+      year: '1999'
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FRocky%20Balboa.png?alt=media&token=d3010335-0f73-42a2-a5c1-ccb5752d1df7',
+      title: 'Rocky Balboa',
+      role: 'Personal Costumer, Sylvester Stallone',
+      year: '2006'
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FLord%20of%20Illusions.jpeg?alt=media&token=8bc4becc-1199-42ad-816c-3e947446d0b9',
+      title: 'Lord of Illusions',
+      role: 'Set Costumer',
+      year: '1995'
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FThe%20Fantasticks.jpeg?alt=media&token=75058939-afdd-47f9-a734-b2b16b613cb6',
+      title: 'The Fantasticks',
+      role: 'Set Costumer',
+      year: '1995'
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FLady%20In%20The%20Water.jpg?alt=media&token=eeecf6ec-dd5e-4518-8fe3-a71b74a9a683',
+      title: 'Lady in the Water',
+      role: 'Shopper',
+      year: '2006'
+    },
+    {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/film%2FLike%20Mike.jpg?alt=media&token=f66d6d94-b93d-4754-bbbb-03537ec51b84',
+      title: 'Like Mike',
+      role: 'Costumer',
+      year: '2002'
+    }
   ],
   series: [
     {
@@ -261,9 +289,9 @@ export const galleryData: GalleryData = {
   ],
   ads: [
     {
-      imgSrc: "https://www.youtube.com/embed/IM096SebXlw?si=MMvLgFU3g0SOFOZY",
-      title: "Chunky Soup: Spicy & Bold with Jason Kelce (:15)",
-      role: "Campbells Chunky",
+      imgSrc: "https://www.youtube.com/embed/UAiFKN1dyj8?si=Pxv9KuUALz42rH1I",
+      title: "Designed with ♡: In-Home WiFi",
+      role: "Comcast",
       year: "2024",
     },
     {
@@ -273,10 +301,22 @@ export const galleryData: GalleryData = {
       year: "2023",
     },
     {
-      imgSrc: "https://www.youtube.com/embed/UAiFKN1dyj8?si=Pxv9KuUALz42rH1I",
-      title: "Designed with ♡: In-Home WiFi",
-      role: "Comcast",
-      year: "2024",
+      imgSrc: "https://www.youtube.com/embed/zPNqMV3OGKk?si=-2_cvSTXnia-cQeW",
+      title: "Caesar's Atlantic City",
+      role: "Caesars Atlantic City Hotel & Casino",
+      year: "2023",
+    },
+    {
+      imgSrc: "https://www.youtube.com/embed/Ks7pkVjx-04?si=cPl1uVM22bKUPcFn",
+      title: "The Official Chip of the NFL",
+      role: "Tostitos",
+      year: "2018",
+    },
+    {
+      imgSrc: "https://www.youtube.com/embed/5U3VcB0_Rws?si=hVFN88gacYYEqiGh",
+      title: "Since 1776",
+      role: "Philadelphia 76ers",
+      year: "2015",
     },
   ],
 };

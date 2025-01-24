@@ -199,7 +199,7 @@ export const StyledLink = styled(Link)`
   &::after {
     content: "";
     position: absolute;
-    bottom: -10px;
+    bottom: 15px;
     left: 0;
     width: 0;
     height: 2px;

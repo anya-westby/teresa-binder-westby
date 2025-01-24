@@ -390,6 +390,12 @@ export const galleryData: GalleryData = {
       year: "2023",
     },
     {
+      imgSrc: 'https://www.youtube.com/embed/ATynH1CyUrU?si=GXfA4MZHM__NXtlx',
+      title: 'Are you stuck in the Past?',
+      role: 'GIANT',
+      year: '2023'
+    },
+    {
       imgSrc: "https://www.youtube.com/embed/zPNqMV3OGKk?si=-2_cvSTXnia-cQeW",
       title: "Caesar's Atlantic City",
       role: "Caesars Atlantic City Hotel & Casino",
@@ -407,11 +413,6 @@ export const galleryData: GalleryData = {
       role: "Philadelphia 76ers",
       year: "2015",
     },
-    {
-      imgSrc: 'https://www.youtube.com/embed/ATynH1CyUrU?si=GXfA4MZHM__NXtlx',
-      title: 'Are you stuck in the Past?',
-      role: 'GIANT',
-      year: '2023'
-    }
+
   ],
 };

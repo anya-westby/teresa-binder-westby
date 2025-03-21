@@ -14,8 +14,11 @@ export const Container = styled.div`
   box-sizing: border-box;
 
   @media (max-width: 768px) {
+    padding: 4rem 2rem;
+  }
+
+  @media (max-width: 500px) {
     padding: 4rem 1rem;
-    justify-content: center;
   }
 `;
 
@@ -38,44 +41,45 @@ export const Title = styled.h1`
 
 export const MosaicGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-auto-rows: 350px;
-  grid-auto-flow: dense;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-rows: 300px;
-  }
+  grid-auto-rows: 0;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-rows: 250px;
   }
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
-    grid-auto-rows: auto;
   }
 `;
 
-export const LookItem = styled.div<{ span?: number }>`
+export const LookItem = styled.div`
   position: relative;
   overflow: hidden;
-  grid-column: span ${(props) => props.span || 1};
-  grid-row: span ${(props) => props.span || 1};
   animation: ${fadeIn} 0.8s ease forwards;
+
+  @media (max-width: 500px) {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 0;
+  }
 
   img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
     transition: transform 0.7s ease;
   }
 
@@ -139,5 +143,35 @@ export const SubCaption = styled.p`
 
   @media (max-width: 768px) {
     font-size: 0.8rem;
+  }
+`;
+
+export const MasonryWrapper = styled.div`
+  .masonry-grid {
+    display: flex;
+    width: 100%;
+    margin-left: -1.5rem; /* Adjust for the gutter */
+  }
+
+  .masonry-grid_column {
+    padding-left: 1.5rem; /* Gutter size */
+    background-clip: padding-box;
+  }
+
+  .masonry-grid_column > div {
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 500px) {
+    .masonry-grid {
+      margin-left: 0; /* Remove negative margin on mobile */
+    }
+
+    .masonry-grid_column {
+      padding-left: 0; /* Remove padding on mobile */
+    }
+
+    /* Ensure the container fills available width */
+    width: 100%;
   }
 `;

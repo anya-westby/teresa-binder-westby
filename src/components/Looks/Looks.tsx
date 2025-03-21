@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Masonry from "react-masonry-css";
 import * as S from "./Looks.styles";
 
 interface LookItem {
@@ -193,21 +194,32 @@ const Looks: React.FC = () => {
   return (
     <S.Container>
       <S.Title>Looks</S.Title>
-      <S.MosaicGrid>
-        {looks.map((look) => (
-          <S.LookItem key={look.id} span={look.span}>
-            <S.ImageContainer>
-              <img src={look.imgSrc} alt={look.caption} loading="lazy" />
-            </S.ImageContainer>
-            <S.Overlay>
-              <S.Caption>{look.caption}</S.Caption>
-              <S.SubCaption>
-                {look.production} - {look.year}
-              </S.SubCaption>
-            </S.Overlay>
-          </S.LookItem>
-        ))}
-      </S.MosaicGrid>
+      <S.MasonryWrapper>
+        <Masonry
+          breakpointCols={{
+            default: 4,
+            1100: 3,
+            700: 2,
+            500: 1,
+          }}
+          className="masonry-grid"
+          columnClassName="masonry-grid_column"
+        >
+          {looks.map((look) => (
+            <S.LookItem key={look.id}>
+              <S.ImageContainer>
+                <img src={look.imgSrc} alt={look.caption} loading="lazy" />
+              </S.ImageContainer>
+              <S.Overlay>
+                <S.Caption>{look.caption}</S.Caption>
+                <S.SubCaption>
+                  {look.production} - {look.year}
+                </S.SubCaption>
+              </S.Overlay>
+            </S.LookItem>
+          ))}
+        </Masonry>
+      </S.MasonryWrapper>
     </S.Container>
   );
 };

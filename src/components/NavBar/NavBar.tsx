@@ -11,6 +11,7 @@ export const active_screen = {
   films: "Film",
   series: "Series",
   ads: "Ads",
+  looks: "Looks",
 };
 
 export default function NavBar({ activeItem }: { activeItem: string }) {
@@ -63,6 +64,12 @@ export default function NavBar({ activeItem }: { activeItem: string }) {
           className={activeItem === active_screen.ads ? "active" : ""}
         >
           Ads
+        </NavLink>
+        <NavLink
+          to="/looks"
+          className={activeItem === active_screen.looks ? "active" : ""}
+        >
+          Looks
         </NavLink>
         <NavLink
           to="/contact"

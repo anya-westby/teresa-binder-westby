@@ -15,6 +15,7 @@ export const Nav = styled.nav`
   padding: 1.5rem 3rem;
   z-index: 1000;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 
   &.nav--scrolled {
     background-color: rgba(47, 79, 79, 0.2);

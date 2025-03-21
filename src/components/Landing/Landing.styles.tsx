@@ -158,7 +158,7 @@ export const Title = styled.span<{ delay?: number }>`
   font-weight: 200;
   color: ${theme.cream};
   margin-bottom: 1.5rem;
-  letter-spacing: -1px;
+  letter-spacing: -1.2px;
   opacity: 0;
   animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
   animation-delay: ${(props) => props.delay || 0}s;

@@ -24,11 +24,19 @@ export const sections = [
       imageLeft: true,
     },
     {
+      title: "Looks",
+      link: "/looks",
+      description: "A collection of my favorite looks",
+      imagePath:
+        "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/landing%2FUntitled%20(1).png?alt=media&token=590bb912-1932-477a-a883-5896f10c08c8",
+      imageLeft: false,
+    },
+    {
       title: "Contact",
       link: "/contact",
       description: "Let's get in touch",
       imagePath:
         "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/landing%2FUntitled%20(4).png?alt=media&token=dd2559a2-c12a-45bc-8694-48bfc2d4997f",
-      imageLeft: false,
+      imageLeft: true,
     },
   ];

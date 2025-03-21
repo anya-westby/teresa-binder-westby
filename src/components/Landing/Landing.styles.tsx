@@ -143,14 +143,14 @@ export const ContentContainer = styled.div<{ isLeft: boolean }>`
   padding: 0 4rem;
 
   @media (max-width: 768px) {
-    padding: 2rem 1rem;
+    padding: 1rem 1rem 0rem;
     align-items: center;
     text-align: center;
     order: 1;
   }
 `;
 
-export const Title = styled.h2<{ delay?: number }>`
+export const Title = styled.span<{ delay?: number }>`
   font-family: "Montserrat", sans-serif !important;
   font-weight: 400;
   font-optical-sizing: auto;

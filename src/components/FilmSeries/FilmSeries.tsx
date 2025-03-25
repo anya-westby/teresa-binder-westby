@@ -131,9 +131,7 @@ const FilmSeries: React.FC = () => {
   const SectionHeader = ({ title }: { title: string }) => (
     <S.SectionHeaderContainer>
       <S.SectionHeaderLine />
-      <S.SectionHeaderContent>
-        <S.SectionHeaderText>{title}</S.SectionHeaderText>
-      </S.SectionHeaderContent>
+      <S.SectionHeaderText>{title}</S.SectionHeaderText>
       <S.SectionHeaderLine />
     </S.SectionHeaderContainer>
   );

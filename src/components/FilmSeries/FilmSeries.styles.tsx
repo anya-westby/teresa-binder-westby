@@ -19,20 +19,21 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.span`
   font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
   font-size: 2rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 2rem;
   color: ${theme.sage};
+  display: flex;
+  justify-content: center;
 
   @media (max-width: 768px) {
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 0rem;
     letter-spacing: -1px;
-    text-align: center;
+    text-align: left;
   }
 `;
 
@@ -40,7 +41,7 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -55,8 +56,8 @@ export const TabsContainer = styled.div`
   align-items: center;
 
   @media (max-width: 768px) {
-    align-self: flex-end;
-    margin-top: 1rem;
+    align-self: flex-start;
+    margin-top: 0rem;
   }
 `;
 

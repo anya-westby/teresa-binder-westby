@@ -31,7 +31,11 @@ export const GlobalStyle = createGlobalStyle`
     background: #000000;
     color: #ffffff;
   }
- html, body {
+  
+  /* Add font imports at the global level */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=DM+Sans:wght@200;400&display=swap');
+  
+  html, body {
     background: #0f0f0f !important;
     color: #ffffff;
     margin: 0;

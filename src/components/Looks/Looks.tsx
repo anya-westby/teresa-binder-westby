@@ -16,6 +16,20 @@ const Looks: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      // Close modal if screen size changes to mobile
+      if (window.innerWidth < 768 && modalOpen) {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [modalOpen]);
 
   useEffect(() => {
     // This is where you would fetch the data from Firebase
@@ -184,8 +198,11 @@ const Looks: React.FC = () => {
     });
   };
 
-  // Open modal with selected image
+  // Open modal with selected image - only on non-mobile screens
   const openModal = (index: number) => {
+    // Don't open modal on mobile screens (width < 768px)
+    if (windowWidth < 768) return;
+
     setCurrentImageIndex(index);
     setModalOpen(true);
     // Prevent scrolling when modal is open

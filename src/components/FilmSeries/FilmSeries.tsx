@@ -212,7 +212,7 @@ const FilmSeries: React.FC = () => {
   return (
     <S.Container>
       <S.HeaderContainer>
-        <S.Title>Film + Series</S.Title>
+        <S.Title>Films + Series</S.Title>
         <S.TabsContainer>
           <S.TabButton
             active={activeTab === "all"}

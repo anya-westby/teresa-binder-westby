@@ -26,12 +26,10 @@ export const Title = styled.span`
   letter-spacing: 1px;
   text-transform: uppercase;
   color: ${theme.sage};
-  display: flex;
-  justify-content: center;
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    margin-bottom: 0rem;
+    margin-bottom: 1rem;
     letter-spacing: -1px;
     text-align: left;
   }
@@ -46,7 +44,9 @@ export const HeaderContainer = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 1rem;
+    width: 100%;
+    padding-right: 0;
   }
 `;
 

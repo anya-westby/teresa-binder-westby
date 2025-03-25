@@ -30,17 +30,18 @@ export const ContentWrapper = styled.div`
 export const Title = styled.h1`
   font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
-  font-size: 5rem;
+  font-size: 2rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 6rem;
+  margin-bottom: 2rem;
   text-align: center;
   color: ${theme.sage};
+
   @media (max-width: 768px) {
-    font-size: 4rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -1px;
-    text-align: center;
+    text-align: left;
   }
 `;
 

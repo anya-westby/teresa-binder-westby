@@ -30,6 +30,7 @@ export const LeftSection = styled.div`
     width: 100%;
     padding-right: 0;
     order: 1;
+    padding-top: 2rem;
   }
 `;
 
@@ -47,20 +48,20 @@ export const RightSection = styled.div`
   }
 `;
 
-export const Title = styled.h1`
+export const Title = styled.span`
   font-family: "Montserrat", sans-serif !important;
   font-weight: 300;
   font-size: 2rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: ${theme.sage};
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -1px;
-    text-align: center;
+    text-align: left;
   }
 `;
 

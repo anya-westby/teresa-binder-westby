@@ -32,10 +32,10 @@ export const Title = styled.h1`
   color: ${theme.sage};
 
   @media (max-width: 768px) {
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -1px;
-    text-align: center;
+    text-align: left;
   }
 `;
 

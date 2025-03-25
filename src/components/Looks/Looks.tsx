@@ -14,6 +14,25 @@ interface LookItem {
 const Looks: React.FC = () => {
   const [looks, setLooks] = useState<LookItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    // Set the initial window width after component mounts (client-side only)
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      // Close modal if screen size changes to mobile
+      if (window.innerWidth < 768 && modalOpen) {
+        closeModal();
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [modalOpen]);
 
   useEffect(() => {
     // This is where you would fetch the data from Firebase
@@ -182,6 +201,56 @@ const Looks: React.FC = () => {
     });
   };
 
+  // Open modal with selected image - only on non-mobile screens
+  const openModal = (index: number) => {
+    // Don't open modal on mobile screens (width < 768px)
+    if (windowWidth < 768) return;
+
+    setCurrentImageIndex(index);
+    setModalOpen(true);
+    // Prevent scrolling when modal is open
+    document.body.style.overflow = "hidden";
+  };
+
+  // Close modal
+  const closeModal = () => {
+    setModalOpen(false);
+    // Re-enable scrolling
+    document.body.style.overflow = "auto";
+  };
+
+  // Navigate to next image
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev === looks.length - 1 ? 0 : prev + 1));
+  };
+
+  // Navigate to previous image
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev === 0 ? looks.length - 1 : prev - 1));
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!modalOpen) return;
+
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight")
+        setCurrentImageIndex((prev) =>
+          prev === looks.length - 1 ? 0 : prev + 1
+        );
+      if (e.key === "ArrowLeft")
+        setCurrentImageIndex((prev) =>
+          prev === 0 ? looks.length - 1 : prev - 1
+        );
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [modalOpen, looks.length]);
+
   if (loading) {
     return (
       <S.Container>
@@ -197,16 +266,16 @@ const Looks: React.FC = () => {
       <S.MasonryWrapper>
         <Masonry
           breakpointCols={{
-            default: 4,
-            1100: 3,
+            default: 3,
+            1100: 2,
             700: 2,
             500: 1,
           }}
           className="masonry-grid"
           columnClassName="masonry-grid_column"
         >
-          {looks.map((look) => (
-            <S.LookItem key={look.id}>
+          {looks.map((look, index) => (
+            <S.LookItem key={look.id} onClick={() => openModal(index)}>
               <S.ImageContainer>
                 <img src={look.imgSrc} alt={look.caption} loading="lazy" />
               </S.ImageContainer>
@@ -220,6 +289,41 @@ const Looks: React.FC = () => {
           ))}
         </Masonry>
       </S.MasonryWrapper>
+
+      {/* Modal Slideshow */}
+      {modalOpen && looks.length > 0 && (
+        <S.Modal onClick={closeModal}>
+          <S.ModalContent onClick={(e) => e.stopPropagation()}>
+            <S.CloseButton onClick={closeModal}>&times;</S.CloseButton>
+
+            <S.SlideNavButton left onClick={prevImage}>
+              &#10094;
+            </S.SlideNavButton>
+
+            <S.ModalImageContainer>
+              <img
+                src={looks[currentImageIndex].imgSrc}
+                alt={looks[currentImageIndex].caption}
+              />
+              <S.ModalCaption>
+                <h3>{looks[currentImageIndex].caption}</h3>
+                <p>
+                  {looks[currentImageIndex].production} -{" "}
+                  {looks[currentImageIndex].year}
+                </p>
+              </S.ModalCaption>
+            </S.ModalImageContainer>
+
+            <S.SlideNavButton right onClick={nextImage}>
+              &#10095;
+            </S.SlideNavButton>
+
+            <S.ModalCounter>
+              {currentImageIndex + 1} / {looks.length}
+            </S.ModalCounter>
+          </S.ModalContent>
+        </S.Modal>
+      )}
     </S.Container>
   );
 };

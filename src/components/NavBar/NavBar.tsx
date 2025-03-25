@@ -6,12 +6,11 @@ import useWindow from "../../utils/hooks/useWindow";
 import { Nav, NavLink, NavLinkContainer, NavToggle } from "./NavBar.styles";
 
 export const active_screen = {
-  home: "Home",
-  contact: "Contact",
-  films: "Film",
-  series: "Series",
-  ads: "Ads",
-  looks: "Looks",
+  home: "home",
+  filmSeries: "filmSeries",
+  ads: "ads",
+  looks: "looks",
+  contact: "contact",
 };
 
 export default function NavBar({ activeItem }: { activeItem: string }) {
@@ -48,16 +47,10 @@ export default function NavBar({ activeItem }: { activeItem: string }) {
           Home
         </NavLink>
         <NavLink
-          to="/films"
-          className={activeItem === active_screen.films ? "active" : ""}
+          to="/film-series"
+          className={activeItem === active_screen.filmSeries ? "active" : ""}
         >
-          Film
-        </NavLink>
-        <NavLink
-          to="/series"
-          className={activeItem === active_screen.series ? "active" : ""}
-        >
-          Series
+          Film + Series
         </NavLink>
         <NavLink
           to="/ads"

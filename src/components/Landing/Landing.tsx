@@ -13,6 +13,7 @@ import {
 } from "./Landing.styles";
 import { Header, Subtext } from "../../styledComponents/globals";
 import { sections } from "./components/Sections/Sections";
+import { Link } from "gatsby";
 
 export default function Landing() {
   // const [contentLoaded, setContentLoaded] = useState(false);
@@ -28,13 +29,18 @@ export default function Landing() {
         <Section key={index}>
           {section.imageLeft ? (
             <>
-              <ImageContainer isLeft={section.imageLeft}>
-                <StyledImage
-                  src={section.imagePath}
-                  alt={section.title}
-                  loading={index === 0 ? "eager" : "lazy"}
-                />
-              </ImageContainer>
+              <Link
+                to={section.link}
+                style={{ flex: 1, display: "flex", textDecoration: "none" }}
+              >
+                <ImageContainer isLeft={section.imageLeft}>
+                  <StyledImage
+                    src={section.imagePath}
+                    alt={section.title}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </ImageContainer>
+              </Link>
               <ContentContainer isLeft={!section.imageLeft}>
                 <StyledLink to={section.link}>
                   <Title delay={0.1 * index}>{section.title}</Title>
@@ -54,13 +60,18 @@ export default function Landing() {
                   {section.description}
                 </Description>
               </ContentContainer>
-              <ImageContainer isLeft={section.imageLeft}>
-                <StyledImage
-                  src={section.imagePath}
-                  alt={section.title}
-                  loading={index === 0 ? "eager" : "lazy"}
-                />
-              </ImageContainer>
+              <Link
+                to={section.link}
+                style={{ flex: 1, display: "flex", textDecoration: "none" }}
+              >
+                <ImageContainer isLeft={section.imageLeft}>
+                  <StyledImage
+                    src={section.imagePath}
+                    alt={section.title}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </ImageContainer>
+              </Link>
             </>
           )}
         </Section>

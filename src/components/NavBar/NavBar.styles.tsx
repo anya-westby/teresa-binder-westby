@@ -10,7 +10,7 @@ export const Nav = styled.nav`
   left: 0;
   margin: 0;
   display: flex;
-  justify-content: center; // Change to center alignment
+  justify-content: center;
   align-items: center;
   padding: 1.5rem 3rem;
   z-index: 1000;
@@ -20,6 +20,12 @@ export const Nav = styled.nav`
   &.nav--scrolled {
     background-color: rgba(47, 79, 79, 0.2);
     backdrop-filter: blur(8px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.5rem;
+    justify-content: flex-start;
+    width: 60%;
   }
 `;
 
@@ -34,14 +40,16 @@ export const NavLinkContainer = styled.div`
   @media (max-width: 768px) {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 100%;
+    position: fixed; // Change from absolute to fixed
+    top: 0; // Change from 100% to 0
     left: 0;
     right: 0;
     gap: 1.5rem;
     background: rgba(47, 79, 79, 0.95);
-    padding: 2rem;
+    padding: 4rem 2rem 2rem; // Add top padding to account for hamburger
     backdrop-filter: blur(8px);
+    height: 100vh; // Cover the full height
+    z-index: 999; // Below the toggle button
 
     &.active {
       display: flex;
@@ -57,9 +65,10 @@ export const NavToggle = styled.button`
   cursor: pointer;
   padding: 0.5rem;
   transition: all 0.3s ease;
-  position: fixed; // Change to fixed
+  position: fixed;
   right: 1.5rem;
   top: 1.5rem;
+  z-index: 1001; // Ensure it stays above the menu
 
   @media (max-width: 768px) {
     display: block;

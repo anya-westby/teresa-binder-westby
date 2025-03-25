@@ -68,7 +68,7 @@ export const Section = styled.section`
     flex-direction: column;
     height: auto;
     padding: 3rem 1.5rem;
-    gap: 2rem;
+    gap: 1rem;
     order: 1;
   }
 `;
@@ -117,6 +117,7 @@ export const ImageContainer = styled.div<{ isLeft: boolean; delay?: number }>`
   @media (max-width: 768px) {
     transform: translateY(-5%);
     order: 2;
+    margin-bottom: -0.5rem;
   }
 `;
 export const StyledImage = styled.img`
@@ -143,10 +144,11 @@ export const ContentContainer = styled.div<{ isLeft: boolean }>`
   padding: 0 4rem;
 
   @media (max-width: 768px) {
-    padding: 1rem 1rem 0rem;
+    padding: 0.5rem 0rem 0;
     align-items: center;
     text-align: center;
     order: 1;
+    margin-top: -1rem;
   }
 `;
 
@@ -165,11 +167,11 @@ export const Title = styled.span<{ delay?: number }>`
   will-change: transform, opacity;
 
   @media (max-width: 768px) {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 `;
 
-export const Description = styled.h2<{ isLeft?: boolean; delay?: number }>`
+export const Description = styled.span<{ isLeft?: boolean; delay?: number }>`
   font-family: "DM Sans", sans-serif;
   font-size: 1.2rem;
   letter-spacing: 5px;
@@ -177,16 +179,17 @@ export const Description = styled.h2<{ isLeft?: boolean; delay?: number }>`
   font-weight: 200;
   color: ${theme.cream};
   text-transform: uppercase;
-  margin: 1rem 0;
+  margin: 0.25rem;
   max-width: 400px;
   text-align: ${(props) => (props.isLeft ? "left" : "right")};
   opacity: 0;
   animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
   animation-delay: ${(props) => props.delay || 0.2}s;
   will-change: transform, opacity;
+
   @media (max-width: 768px) {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 0.875rem;
   }
 `;
 
@@ -195,11 +198,12 @@ export const StyledLink = styled(Link)`
   color: ${landingTheme.text};
   position: relative;
   transition: all 0.3s ease;
+  margin-top: 1rem;
 
   &::after {
     content: "";
     position: absolute;
-    bottom: 15px;
+    bottom: 0px;
     left: 0;
     width: 0;
     height: 2px;

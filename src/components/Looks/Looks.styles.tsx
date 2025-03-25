@@ -32,10 +32,10 @@ export const Title = styled.h1`
   color: ${theme.sage};
 
   @media (max-width: 768px) {
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -1px;
-    text-align: center;
+    text-align: left;
   }
 `;
 
@@ -174,4 +174,144 @@ export const MasonryWrapper = styled.div`
     /* Ensure the container fills available width */
     width: 100%;
   }
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+`;
+
+export const ModalContent = styled.div`
+  position: relative;
+  width: 90%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ModalImageContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+  max-width: 100%;
+
+  img {
+    max-height: calc(80vh - 80px);
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+`;
+
+export const ModalCaption = styled.div`
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 15px 20px;
+  color: white;
+  border-radius: 0 0 4px 4px;
+  width: 100%;
+  text-align: center;
+
+  h3 {
+    margin: 0 0 5px 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  p {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+`;
+
+export const SlideNavButton = styled.button<{
+  left?: boolean;
+  right?: boolean;
+}>`
+  position: absolute;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  ${(props) =>
+    props.left &&
+    `
+    left: 0;
+  `}
+
+  ${(props) =>
+    props.right &&
+    `
+    right: 0;
+  `}
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+  }
+`;
+
+export const ModalCounter = styled.div`
+  position: absolute;
+  bottom: -30px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
 `;

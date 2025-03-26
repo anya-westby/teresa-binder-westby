@@ -75,7 +75,7 @@ const Looks: React.FC = () => {
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_1.jpeg?alt=media&token=7c24bf80-f15e-4c5a-931c-8c22f11551e1",
             caption: "Nicole Kidman",
             production: "Lioness",
-            year: "2022",
+            year: "2024",
             span: 2,
           },
           {
@@ -84,7 +84,7 @@ const Looks: React.FC = () => {
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_2.avif?alt=media&token=15dfb6e6-b7e9-4714-9908-73514e9f2f56",
             caption: "Nicole Kidman and Zoe Saldana",
             production: "Lioness",
-            year: "2022",
+            year: "2024",
             span: 2,
           },
           {
@@ -93,7 +93,7 @@ const Looks: React.FC = () => {
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_3.png?alt=media&token=882e85fc-c999-4db7-b01f-2ad9c854bb8b",
             caption: "Nicole Kidman",
             production: "Lioness",
-            year: "2022",
+            year: "2024",
             span: 2,
           },
           {

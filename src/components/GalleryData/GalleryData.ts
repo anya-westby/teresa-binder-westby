@@ -352,7 +352,7 @@ export const galleryData: GalleryData = {
       title: 'It\'s Always Sunny in Philadelphia',
       role: 'Key Costumer: Philadelphia',
       year: '2005-2015',
-      rolePriority: 3
+      rolePriority: 4
     },
     {
       imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FDownward%20dog.jpeg?alt=media&token=cba132a4-ea43-400c-8b78-bd274f89bb45',
@@ -366,14 +366,14 @@ export const galleryData: GalleryData = {
       title: 'Cold Case',
       role: 'Key Costumer: Philadelphia',
       year: '2003-2010',
-      rolePriority: 3
+      rolePriority: 4
     },
     {
       imgSrc: 'https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/series%2FMare%20of%20Easttown.jpg?alt=media&token=8926a010-f841-4109-83cd-e3d4dad574e4',
       title: 'Mare of Easttown',
       role: 'Shopper',
       year: '2021',
-      rolePriority: 3
+      rolePriority: 4
     }
   ],
   ads: [

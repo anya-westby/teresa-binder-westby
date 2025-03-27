@@ -32,9 +32,6 @@ export const GlobalStyle = createGlobalStyle`
     color: #ffffff;
   }
   
-  /* Add font imports at the global level */
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=DM+Sans:wght@200;400&display=swap');
-  
   html, body {
     background: #0f0f0f !important;
     color: #ffffff;
@@ -44,6 +41,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Montserrat', sans-serif;
   }
 
   #___gatsby,

@@ -1,4 +1,6 @@
 // gatsby-browser.js
+import "./src/styledComponents/typography.css";
+
 export const onClientEntry = () => {
     // Add loading class to body
     if (typeof document !== 'undefined') {

@@ -24,7 +24,7 @@ export default function Landing() {
         <Header>teresa binder westby</Header>
         <Subtext>costume designer</Subtext>
       </IntroSection>
-
+      {/* 
       {sections.map((section, index) => (
         <Section key={index}>
           {section.imageLeft ? (
@@ -75,7 +75,7 @@ export default function Landing() {
             </>
           )}
         </Section>
-      ))}
+      ))} */}
     </Container>
   );
 }

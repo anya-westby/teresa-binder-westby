@@ -118,9 +118,9 @@ const Looks: React.FC = () => {
             id: "9",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-20%20at%2010.24.29%E2%80%AFAM.png?alt=media&token=07ce33f7-cec3-494c-a64c-079e986661da",
-            caption: "Carla Gugino",
-            production: "The Mighty Macs",
-            year: "2009",
+            caption: "Anna Gunn",
+            production: "Equity",
+            year: "2016",
             span: 2,
           },
           {

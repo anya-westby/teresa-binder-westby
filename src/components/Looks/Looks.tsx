@@ -63,14 +63,24 @@ const Looks: React.FC = () => {
           {
             id: "3",
             imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_3.png?alt=media&token=882e85fc-c999-4db7-b01f-2ad9c854bb8b",
-            caption: "Nicole Kidman",
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FZoeAndTaylor.PNG?alt=media&token=ad3618cf-80a8-4ce2-b241-674a4bc9f56b",
+            caption: "Zoe Saldaña and Taylor Sheridan",
+            production: "Lioness",
+            year: "2024",
+            span: 2,
+          },
+
+          {
+            id: "4",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FFreeman.PNG?alt=media&token=2004c01e-aa8f-47a9-81bb-41d7816f67ff",
+            caption: "Morgan Freeman",
             production: "Lioness",
             year: "2024",
             span: 2,
           },
           {
-            id: "4",
+            id: "5",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2F210405115037-01-fletcher-street-concrete-cowboys-idris-elba.webp?alt=media&token=d3262a42-c0ff-440b-96c6-c918a4de826a",
             caption: "Idris Elba and Caleb McLaughlin",
@@ -79,16 +89,25 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "5",
+            id: "6",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_2.avif?alt=media&token=15dfb6e6-b7e9-4714-9908-73514e9f2f56",
-            caption: "Nicole Kidman and Zoe Saldana",
+            caption: "Nicole Kidman and Zoe Saldaña",
             production: "Lioness",
             year: "2024",
             span: 2,
           },
           {
-            id: "6",
+            id: "7",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FRupert.png?alt=media&token=968a4b56-0557-4888-a486-3518492ad780",
+            caption: "Rupert Grint",
+            production: "Servant",
+            year: "2019",
+            span: 2,
+          },
+          {
+            id: "8",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGlass.jpeg?alt=media&token=f622e2e9-a1f3-44e3-b5b6-54f2f44cbdc8",
             caption: "James McAvoy, Bruce Willis, and Samuel L. Jackson",
@@ -97,7 +116,7 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "7",
+            id: "9",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2Fbest-supporting-actor-actress-robert-de-niro-jacki-weaver-silver-linings-playbook.jpg?alt=media&token=3502400c-2dfc-4fa1-9b95-810a920c8249",
             caption: "Robert De Niro and Jacki Weaver",
@@ -106,7 +125,7 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "8",
+            id: "10",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FConcrete-Cowboy-Seven.avif?alt=media&token=6946f40c-6d7c-4455-942c-abe1f121e4a2",
             caption: "Caleb McLaughlin and Jharrel Jerome",
@@ -115,7 +134,7 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "9",
+            id: "11",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2Frobert-de-niro-in-silver-linings-playbook.webp?alt=media&token=21ef7725-b921-4e60-86b2-825c29f306ca",
             caption: "Robert De Niro",
@@ -124,7 +143,17 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "10",
+            id: "12",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLionessGroup.PNG?alt=media&token=5684e676-9399-4afc-9e22-f5adad17c101",
+            caption:
+              "Jennifer Ehle, Bruce McGill, Morgan Freeman, Michael Kelly, Nicole Kidman",
+            production: "Lioness",
+            year: "2024",
+            span: 2,
+          },
+          {
+            id: "13",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-20%20at%209.52.13%E2%80%AFAM.png?alt=media&token=a31ce248-698c-4b59-9c52-adcffd2862cd",
             caption: "Carla Gugino",
@@ -134,7 +163,7 @@ const Looks: React.FC = () => {
           },
 
           {
-            id: "11",
+            id: "14",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FMCDCREE_EC023_H.webp?alt=media&token=a5bb9df2-0501-49cd-ae80-f97b5daffea1",
             caption: "Michael B. Jordan and Sylvester Stallone",
@@ -143,7 +172,16 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "12",
+            id: "15",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGere.jpeg?alt=media&token=838ae25e-3d2e-4f89-882d-7073b456860c",
+            caption: "Richard Gere",
+            production: "The Benefactor",
+            year: "2015",
+            span: 2,
+          },
+          {
+            id: "16",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-21%20at%203.28.34%E2%80%AFPM.png?alt=media&token=65759c8f-4bb3-4cff-b9c6-37bea2548d27",
             caption: "Cuba Gooding Jr. and Helen Mirren",
@@ -151,17 +189,9 @@ const Looks: React.FC = () => {
             year: "2005",
             span: 2,
           },
+
           {
-            id: "13",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FFreeman.PNG?alt=media&token=2004c01e-aa8f-47a9-81bb-41d7816f67ff",
-            caption: "Morgan Freeman",
-            production: "Lioness",
-            year: "2024",
-            span: 2,
-          },
-          {
-            id: "14",
+            id: "17",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-20%20at%2010.24.29%E2%80%AFAM.png?alt=media&token=07ce33f7-cec3-494c-a64c-079e986661da",
             caption: "Anna Gunn",
@@ -169,9 +199,17 @@ const Looks: React.FC = () => {
             year: "2016",
             span: 2,
           },
-
           {
-            id: "15",
+            id: "18",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_3.png?alt=media&token=882e85fc-c999-4db7-b01f-2ad9c854bb8b",
+            caption: "Nicole Kidman",
+            production: "Lioness",
+            year: "2024",
+            span: 2,
+          },
+          {
+            id: "19",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-21%20at%203.28.00%E2%80%AFPM.png?alt=media&token=72afbe06-56a9-4d76-a30d-78a2a62a1467",
             caption: "Carla Gugino and Ellen Burstyn",
@@ -181,7 +219,7 @@ const Looks: React.FC = () => {
           },
 
           {
-            id: "16",
+            id: "20",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2Frev-1-C2_09807_RC_High_Res_JPEG.avif?alt=media&token=9e5cfe4c-ce2b-467d-8e44-2ca977a4dbeb",
             caption: "Michael B. Jordan",
@@ -190,7 +228,7 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "17",
+            id: "21",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FPurefoy.jpg?alt=media&token=5edc808d-dd8f-4712-8d97-781c4dcfebee",
             caption: "James Purefoy",
@@ -199,7 +237,7 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "18",
+            id: "22",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGenesis.PNG?alt=media&token=3b250278-4505-41c4-beae-32541880eb69",
             caption: "Genesis Rodriguez",
@@ -208,7 +246,7 @@ const Looks: React.FC = () => {
             span: 2,
           },
           {
-            id: "19",
+            id: "23",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FMcAvoy.png?alt=media&token=5c373738-3148-4fd7-b521-6394045074b9",
             caption: "James McAvoy",
@@ -216,31 +254,14 @@ const Looks: React.FC = () => {
             year: "2016",
             span: 2,
           },
+
           {
-            id: "20",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGere.jpeg?alt=media&token=838ae25e-3d2e-4f89-882d-7073b456860c",
-            caption: "Richard Gere",
-            production: "The Benefactor",
-            year: "2015",
-            span: 2,
-          },
-          {
-            id: "21",
+            id: "24",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FTessa.png?alt=media&token=728b549a-0552-4ee4-b338-4bec00737179",
             caption: "Tessa Thompson",
             production: "Creed",
             year: "2015",
-            span: 2,
-          },
-          {
-            id: "22",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FRupert.png?alt=media&token=968a4b56-0557-4888-a486-3518492ad780",
-            caption: "Rupert Grint",
-            production: "Servant",
-            year: "2019",
             span: 2,
           },
         ];

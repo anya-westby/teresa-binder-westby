@@ -151,9 +151,17 @@ const Looks: React.FC = () => {
             year: "2005",
             span: 2,
           },
-
           {
             id: "13",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FFreeman.PNG?alt=media&token=2004c01e-aa8f-47a9-81bb-41d7816f67ff",
+            caption: "Morgan Freeman",
+            production: "Lioness",
+            year: "2024",
+            span: 2,
+          },
+          {
+            id: "14",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-20%20at%2010.24.29%E2%80%AFAM.png?alt=media&token=07ce33f7-cec3-494c-a64c-079e986661da",
             caption: "Anna Gunn",
@@ -163,7 +171,7 @@ const Looks: React.FC = () => {
           },
 
           {
-            id: "14",
+            id: "15",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-21%20at%203.28.00%E2%80%AFPM.png?alt=media&token=72afbe06-56a9-4d76-a30d-78a2a62a1467",
             caption: "Carla Gugino and Ellen Burstyn",
@@ -173,12 +181,66 @@ const Looks: React.FC = () => {
           },
 
           {
-            id: "15",
+            id: "16",
             imgSrc:
               "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2Frev-1-C2_09807_RC_High_Res_JPEG.avif?alt=media&token=9e5cfe4c-ce2b-467d-8e44-2ca977a4dbeb",
             caption: "Michael B. Jordan",
             production: "Creed",
             year: "2015",
+            span: 2,
+          },
+          {
+            id: "17",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FPurefoy.jpg?alt=media&token=5edc808d-dd8f-4712-8d97-781c4dcfebee",
+            caption: "James Purefoy",
+            production: "Equity",
+            year: "2016",
+            span: 2,
+          },
+          {
+            id: "18",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGenesis.PNG?alt=media&token=3b250278-4505-41c4-beae-32541880eb69",
+            caption: "Genesis Rodriguez",
+            production: "Lioness",
+            year: "2024",
+            span: 2,
+          },
+          {
+            id: "19",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FMcAvoy.png?alt=media&token=5c373738-3148-4fd7-b521-6394045074b9",
+            caption: "James McAvoy",
+            production: "Split",
+            year: "2016",
+            span: 2,
+          },
+          {
+            id: "20",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGere.jpeg?alt=media&token=838ae25e-3d2e-4f89-882d-7073b456860c",
+            caption: "Richard Gere",
+            production: "The Benefactor",
+            year: "2015",
+            span: 2,
+          },
+          {
+            id: "21",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FTessa.png?alt=media&token=728b549a-0552-4ee4-b338-4bec00737179",
+            caption: "Tessa Thompson",
+            production: "Creed",
+            year: "2015",
+            span: 2,
+          },
+          {
+            id: "22",
+            imgSrc:
+              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FRupert.png?alt=media&token=968a4b56-0557-4888-a486-3518492ad780",
+            caption: "Rupert Grint",
+            production: "Servant",
+            year: "2019",
             span: 2,
           },
         ];

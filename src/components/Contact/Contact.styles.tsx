@@ -14,7 +14,7 @@ const slideUp = keyframes`
 
 export const Container = styled.div`
   min-height: 100vh;
-  background: black;
+  background: #0f0f0f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,11 +82,13 @@ export const ContactItem = styled.div`
   text-align: center;
   background: rgba(255, 255, 255, 0.05);
   padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 
   ${ContactLink}:hover & {
     background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(183, 196, 167, 0.5);
   }
 `;
 
@@ -99,11 +101,21 @@ export const IconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
+  transition: background-color 0.3s ease;
 
   svg {
     color: white;
     width: 24px;
     height: 24px;
+    transition: color 0.3s ease;
+  }
+
+  ${ContactLink}:hover & {
+    background: rgba(183, 196, 167, 0.2);
+
+    svg {
+      color: ${theme.sage};
+    }
   }
 `;
 

@@ -1,11 +1,22 @@
 // Ads.styles.js
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { theme } from "../../styledComponents/globals";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const Container = styled.div`
   height: 100vh;
   width: 100%;
-  background: black;
+  background: #0f0f0f;
   padding: 4rem 6rem;
   box-sizing: border-box;
   display: flex;
@@ -71,8 +82,10 @@ export const StyledIframe = styled.iframe`
   left: 0;
   width: 100%;
   height: 100%;
+  border: 1px solid rgba(183, 196, 167, 0.2);
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  animation: ${fadeIn} 0.5s ease;
 `;
 
 export const ContentSection = styled.div`
@@ -92,6 +105,7 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  animation: ${fadeIn} 0.5s ease;
 
   @media (max-width: 768px) {
     gap: 0.25rem;

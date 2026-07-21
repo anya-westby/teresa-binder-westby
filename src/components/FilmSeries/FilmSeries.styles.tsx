@@ -8,7 +8,7 @@ const fadeIn = keyframes`
 
 export const Container = styled.div`
   width: 100%;
-  background: black;
+  background: #0f0f0f;
   padding: 4rem 6rem;
   color: white;
   box-sizing: border-box;
@@ -61,21 +61,25 @@ export const TabsContainer = styled.div`
   }
 `;
 
-export const TabButton = styled.button<{ active: boolean }>`
+export const TabButton = styled.button<{ $active: boolean }>`
   padding: 0.5rem 1.25rem;
-  background: ${(props) => (props.active ? theme.sage : "transparent")};
-  color: ${(props) => (props.active ? "black" : "white")};
-  border: 1px solid ${theme.sage};
-  border-radius: 4px;
+  background: ${(props) => (props.$active ? theme.sage : "transparent")};
+  color: ${(props) => (props.$active ? "black" : "white")};
+  border: 1px solid ${(props) =>
+    props.$active ? theme.sage : "rgba(183, 196, 167, 0.5)"};
+  border-radius: 9999px;
   font-family: "Montserrat", sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   transition: all 0.25s ease;
   cursor: pointer;
 
   &:hover {
+    border-color: ${theme.sage};
     background: ${(props) =>
-      props.active ? theme.sage : "rgba(155, 164, 145, 0.2)"};
+      props.$active ? theme.sage : "rgba(155, 164, 145, 0.2)"};
   }
 `;
 
@@ -96,7 +100,7 @@ export const SectionHeaderLine = styled.div`
   background: linear-gradient(
     to var(--direction, right),
     transparent,
-    rgba(255, 255, 255, 0.3)
+    rgba(183, 196, 167, 0.4)
   );
 
   &:first-child {
@@ -172,6 +176,14 @@ export const GalleryGrid = styled.div`
 export const GalleryItem = styled.div`
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
+  opacity: 0;
+  animation: ${fadeIn} 0.8s ease forwards;
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -223,7 +235,7 @@ export const ItemOverlay = styled.div`
   }
 
   ${GalleryItem}:hover & {
-    opacity: 1.5;
+    opacity: 1;
   }
 `;
 

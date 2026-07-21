@@ -8,7 +8,7 @@ const fadeIn = keyframes`
 
 export const Container = styled.div`
   width: 100%;
-  background: black;
+  background: #0f0f0f;
   padding: 4rem 6rem;
   color: white;
   box-sizing: border-box;

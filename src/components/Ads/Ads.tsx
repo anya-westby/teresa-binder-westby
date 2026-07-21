@@ -35,7 +35,7 @@ export default function Ads() {
       <LeftSection>
         <Title>Advertisements</Title>
         <ContentSection>
-          <InfoContainer>
+          <InfoContainer key={currentIndex}>
             <AdTitle>{ads[currentIndex].title}</AdTitle>
             <AdRole>{ads[currentIndex].role}</AdRole>
             <Divider />
@@ -60,6 +60,7 @@ export default function Ads() {
 
       <RightSection>
         <StyledIframe
+          key={currentIndex}
           src={ads[currentIndex].imgSrc}
           title={ads[currentIndex].title}
           referrerPolicy="strict-origin-when-cross-origin"

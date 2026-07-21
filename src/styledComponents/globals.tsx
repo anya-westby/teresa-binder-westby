@@ -55,6 +55,33 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
   }
+
+  ::selection {
+    background: ${theme.sage};
+    color: #0f0f0f;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(183, 196, 167, 0.4) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(183, 196, 167, 0.35);
+    border-radius: 9999px;
+
+    &:hover {
+      background: rgba(183, 196, 167, 0.6);
+    }
+  }
 `;
 
 export const Header = styled.h1`

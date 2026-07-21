@@ -215,19 +215,19 @@ const FilmSeries: React.FC = () => {
         <S.Title>Films + Series</S.Title>
         <S.TabsContainer>
           <S.TabButton
-            active={activeTab === "all"}
+            $active={activeTab === "all"}
             onClick={() => setActiveTab("all")}
           >
             All
           </S.TabButton>
           <S.TabButton
-            active={activeTab === "film"}
+            $active={activeTab === "film"}
             onClick={() => setActiveTab("film")}
           >
             Film
           </S.TabButton>
           <S.TabButton
-            active={activeTab === "series"}
+            $active={activeTab === "series"}
             onClick={() => setActiveTab("series")}
           >
             Series

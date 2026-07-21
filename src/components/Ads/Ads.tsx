@@ -62,6 +62,7 @@ export default function Ads() {
         <StyledIframe
           src={ads[currentIndex].imgSrc}
           title={ads[currentIndex].title}
+          referrerPolicy="strict-origin-when-cross-origin"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />

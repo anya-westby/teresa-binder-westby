@@ -1,3 +1,4 @@
+import { Seo } from "../components/Seo";
 import * as React from "react";
 import { active_screen } from "../components/NavBar/NavBar";
 import { SiteWrapper } from "../components/SiteWrapper/SiteWrapper";
@@ -12,3 +13,5 @@ const FilmsPage: React.FC = () => {
 };
 
 export default FilmsPage;
+
+export const Head = () => <Seo title="Films" pathname="/films/" />;

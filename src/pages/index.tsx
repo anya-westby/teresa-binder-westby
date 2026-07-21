@@ -1,3 +1,4 @@
+import { Seo } from "../components/Seo";
 import React from "react";
 import { active_screen } from "../components/NavBar/NavBar";
 import { SiteWrapper } from "../components/SiteWrapper/SiteWrapper";
@@ -12,3 +13,5 @@ const index: React.FC = () => {
 };
 
 export default index;
+
+export const Head = () => <Seo pathname="/" />;

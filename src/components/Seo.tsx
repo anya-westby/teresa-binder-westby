@@ -1,12 +1,37 @@
-// Create a new file: src/components/Seo.tsx
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 
-export const Head = () => {
+const SITE_NAME = "Teresa Binder Westby";
+const SITE_URL = "https://teresabinderwestby.com";
+const DEFAULT_DESCRIPTION =
+  "Teresa Binder Westby is a costume designer for film and television, with credits including Equity, Special Ops: Lioness, Creed, Unbreakable, Signs, and National Treasure.";
+
+interface SeoProps {
+  title?: string;
+  description?: string;
+  pathname?: string;
+}
+
+export const Seo = ({ title, description, pathname }: SeoProps) => {
+  const fullTitle = title
+    ? `${title} — ${SITE_NAME} | Costume Designer`
+    : `${SITE_NAME} | Costume Designer`;
+  const metaDescription = description || DEFAULT_DESCRIPTION;
+  const url = `${SITE_URL}${pathname || "/"}`;
+
   return (
     <>
-      <title>Teresa Binder Westby</title>
+      <title>{fullTitle}</title>
+      <meta name="description" content={metaDescription} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="canonical" href={url} />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={url} />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={metaDescription} />
       <style>{`
         html, body, #___gatsby {
           background: rgb(15, 15, 15) !important;
@@ -18,3 +43,5 @@ export const Head = () => {
     </>
   );
 };
+
+export const Head = () => <Seo />;

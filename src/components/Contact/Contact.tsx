@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Mail, Phone, Title } from "@mui/icons-material";
+import { Mail, Phone, Theaters } from "@mui/icons-material";
 import * as S from "./Contact.styles";
 
 const Contact: React.FC = () => {
@@ -25,6 +25,20 @@ const Contact: React.FC = () => {
               </S.IconWrapper>
               <S.Label>Phone</S.Label>
               <S.Value>(610) 883-3387</S.Value>
+            </S.ContactItem>
+          </S.ContactLink>
+
+          <S.ContactLink
+            href="https://www.imdb.com/name/nm0082816/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <S.ContactItem>
+              <S.IconWrapper>
+                <Theaters />
+              </S.IconWrapper>
+              <S.Label>IMDb</S.Label>
+              <S.Value>Full Filmography</S.Value>
             </S.ContactItem>
           </S.ContactLink>
         </S.Grid>

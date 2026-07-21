@@ -1,3 +1,4 @@
+import { Seo } from "../components/Seo";
 import * as React from "react";
 import { active_screen } from "../components/NavBar/NavBar";
 import Contact from "../components/Contact/Contact";
@@ -12,3 +13,11 @@ const ContactPage: React.FC = () => {
 };
 
 export default ContactPage;
+
+export const Head = () => (
+  <Seo
+    title="Contact"
+    description="Contact costume designer Teresa Binder Westby for film, television, and commercial productions."
+    pathname="/contact/"
+  />
+);

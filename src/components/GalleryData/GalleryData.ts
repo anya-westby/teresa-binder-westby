@@ -396,12 +396,6 @@ export const galleryData: GalleryData = {
       year: '2023'
     },
     {
-      imgSrc: "https://www.youtube.com/embed/zPNqMV3OGKk?si=-2_cvSTXnia-cQeW",
-      title: "Caesar's Atlantic City",
-      role: "Caesars Atlantic City Hotel & Casino",
-      year: "2023",
-    },
-    {
       imgSrc: "https://www.youtube.com/embed/Ks7pkVjx-04?si=cPl1uVM22bKUPcFn",
       title: "The Official Chip of the NFL",
       role: "Tostitos",

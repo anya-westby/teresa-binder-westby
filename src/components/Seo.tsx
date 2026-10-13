@@ -4,7 +4,7 @@ export const Head = () => {
   return (
     <>
       <html lang="en" />
-      <title>Teresa Binder Westby — Costume Designer</title>
+      <title>Teresa Binder Westby | Costume Designer</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta
         name="description"

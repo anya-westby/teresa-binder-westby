@@ -38,7 +38,7 @@ export default function Ads() {
             {playing ? (
               <iframe
                 src={`https://www.youtube.com/embed/${ad.id}?autoplay=1&rel=0`}
-                title={`${ad.role} — ${ad.title}`}
+                title={`${ad.role}: ${ad.title}`}
                 referrerPolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -47,7 +47,7 @@ export default function Ads() {
               <S.Poster
                 type="button"
                 onClick={() => setPlaying(true)}
-                aria-label={`Play ${ad.role} — ${ad.title}`}
+                aria-label={`Play ${ad.role}: ${ad.title}`}
               >
                 <img src={`https://i.ytimg.com/vi/${ad.id}/hqdefault.jpg`} alt="" />
                 <span className="play">
@@ -72,7 +72,7 @@ export default function Ads() {
 
         <S.SpotList>
           <Meta>
-            {ads.length} spots · {Math.min(...years)} — {Math.max(...years)}
+            {ads.length} spots · {Math.min(...years)}–{Math.max(...years)}
           </Meta>
           {ads.map((a, i) => (
             <S.Spot

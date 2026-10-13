@@ -36,12 +36,12 @@ export default function Landing() {
         <S.Ruler />
         <S.HeroGrid>
           <S.Lede>
-            Costumes for film, television and advertising — from <em>The Sixth Sense</em> to{" "}
+            Costumes for film, television and advertising, from <em>The Sixth Sense</em> to{" "}
             <em>Lioness</em>.
           </S.Lede>
           <S.Facts>
             <span>{allCredits.length} film &amp; series credits</span>
-            <span>1995 — 2024</span>
+            <span>1995–2024</span>
             <span>Costume Designer · Lioness, Concrete Cowboy, Equity</span>
           </S.Facts>
           <S.Btn to="/film-series">

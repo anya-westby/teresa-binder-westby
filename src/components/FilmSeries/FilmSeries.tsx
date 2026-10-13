@@ -73,7 +73,7 @@ const FilmSeries: React.FC = () => {
               </Pill>
             ))}
           </PillGroup>
-          <Meta>{credits.length} credits · 1995 — 2024</Meta>
+          <Meta>{credits.length} credits · 1995–2024</Meta>
         </Toolbar>
       </PageIntro>
 

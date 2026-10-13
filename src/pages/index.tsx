@@ -12,3 +12,5 @@ const index: React.FC = () => {
 };
 
 export default index;
+
+export { Head } from "../components/Seo";

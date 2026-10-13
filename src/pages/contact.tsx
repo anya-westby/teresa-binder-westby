@@ -12,3 +12,5 @@ const ContactPage: React.FC = () => {
 };
 
 export default ContactPage;
+
+export { Head } from "../components/Seo";

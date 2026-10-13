@@ -1,201 +1,187 @@
-// Ads.styles.js
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { theme } from "../../styledComponents/globals";
 
-export const Container = styled.div`
-  height: 100vh;
-  width: 100%;
-  background: black;
-  padding: 4rem 6rem;
-  box-sizing: border-box;
-  display: flex;
-  overflow: hidden;
+const settle = keyframes`
+  from { opacity: 0; transform: scale(.985); }
+  to { opacity: 1; transform: none; }
+`;
 
-  @media (max-width: 768px) {
-    padding: 2rem;
-    flex-direction: column;
-    height: 100vh;
-    overflow-y: auto;
+export const Layout = styled.section`
+  padding: 0 ${theme.gutter} 96px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(min(400px, 100%), 1fr);
+  gap: 48px;
+  align-items: start;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: minmax(0, 1fr);
   }
 `;
 
-export const LeftSection = styled.div`
-  width: 33%;
+export const StageCol = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-right: 4rem;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    padding-right: 0;
-    order: 1;
-    padding-top: 2rem;
-  }
+  gap: 20px;
+  min-width: 0;
 `;
 
-export const RightSection = styled.div`
-  width: 67%;
+export const Stage = styled.div`
   position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: ${theme.ink};
+  animation: ${settle} 0.5s both;
 
-  @media (max-width: 768px) {
+  iframe {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    order: 3;
-    flex: 1;
-    min-height: 0;
-    position: relative;
-    margin-top: 2rem;
+    height: 100%;
+    border: 0;
   }
 `;
 
-export const Title = styled.span`
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 300;
-  font-size: 2rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
-  color: ${theme.sage};
+export const Poster = styled.button`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: ${theme.paper};
+  cursor: pointer;
+  font-family: ${theme.sans};
 
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.72);
+    transition: filter 0.4s;
+  }
+
+  &:hover img {
+    filter: brightness(0.6);
+  }
+
+  .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 88px;
+    height: 88px;
+    margin: -44px 0 0 -44px;
+    border-radius: 999px;
+    border: 1px solid ${theme.paper};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ${theme.ease}, background 0.3s, color 0.3s;
+  }
+
+  &:hover .play {
+    transform: scale(1.12);
+    background: ${theme.paper};
+    color: ${theme.ink};
+  }
+
+  .bar {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     text-align: left;
   }
 `;
 
-export const StyledIframe = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-`;
-
-export const ContentSection = styled.div`
+export const Caption = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
 
-  @media (max-width: 768px) {
-    order: 2;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    justify-content: center;
-  }
-`;
-
-export const InfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  @media (max-width: 768px) {
-    gap: 0.25rem;
-    justify-content: center;
-  }
-`;
-
-export const AdTitle = styled.h2`
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 400;
-  font-size: 2rem;
-  color: ${theme.cream};
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-    letter-spacing: -1px;
-    text-align: center;
-  }
-`;
-
-export const AdRole = styled.p`
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 300;
-  font-size: 1.5rem;
-  color: ${theme.cream};
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-    text-align: center;
-  }
-`;
-
-export const Divider = styled.div`
-  width: 3rem;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 0.5rem 0;
-
-  @media (max-width: 768px) {
-    width: 2rem;
-    align-self: center;
+  h2 {
     margin: 0;
+    font-family: ${theme.serif};
+    font-weight: 400;
+    font-size: clamp(32px, 3.5vw, 48px);
+    line-height: 1;
+  }
+
+  h2 em {
+    color: ${theme.clay};
+  }
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    color: ${theme.muted};
   }
 `;
 
-export const Year = styled.span`
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 300;
-  font-size: 1rem;
-  color: ${theme.lightGreen};
-  @media (max-width: 768px) {
-    text-align: center;
-  }
-`;
-
-export const Navigation = styled.div`
+export const SpotList = styled.div`
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: column;
+  border-bottom: 1px solid ${theme.line};
 
-  @media (max-width: 768px) {
-    justify-content: center;
-    gap: 1rem;
+  > span {
+    padding-bottom: 14px;
   }
 `;
 
-export const NavigationButton = styled.button`
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 9999px;
+export const Spot = styled.button<{ $on: boolean }>`
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  min-height: 64px;
+  padding: 20px 0;
+  padding-left: ${(p) => (p.$on ? "16px" : "0")};
+  border: 0;
+  border-top: 1px solid ${theme.line};
+  background: ${(p) => (p.$on ? theme.ink : "transparent")};
+  color: ${(p) => (p.$on ? theme.paper : theme.ink)};
+  font-family: ${theme.sans};
+  text-align: left;
   cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 300;
-  font-size: 1rem;
-
-  @media (max-width: 768px) {
-    padding: 0.6rem 1rem;
-    font-size: 0.875rem;
-  }
+  transition: background 0.3s, padding-left 0.3s;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: ${(p) => (p.$on ? theme.ink : theme.hover)};
+    padding-left: ${(p) => (p.$on ? "16px" : "12px")};
   }
 
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+  .small {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    padding-right: 12px;
   }
-`;
 
-export const Counter = styled.span`
-  color: rgba(255, 255, 255, 0.5);
-  min-width: 60px;
-  text-align: center;
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 300;
-  font-size: 1rem;
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
 
-  @media (max-width: 768px) {
-    min-width: 50px;
-    font-size: 0.875rem;
+  .name {
+    font-family: ${theme.serif};
+    font-size: 26px;
+    line-height: 1.05;
+  }
+
+  .sub {
+    font-size: 14px;
+    color: ${(p) => (p.$on ? "#C9BFB2" : theme.muted)};
   }
 `;

@@ -1,7 +1,14 @@
 import * as React from "react";
-import NavBar from "../NavBar/NavBar";
+import styled from "styled-components";
+import NavBar, { active_screen } from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
+import { GlobalStyle } from "../../styledComponents/globals";
 
-import { Site, SiteOverflow } from "./SiteWrapper.styles";
+const Site = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const SiteWrapper = ({
   activeItem,
@@ -11,12 +18,14 @@ export const SiteWrapper = ({
   children: React.ReactNode;
 }) => {
   return (
-    <>
+    <Site>
+      <GlobalStyle />
       <NavBar activeItem={activeItem} />
-      <Site>
-        <SiteOverflow>{children}</SiteOverflow>
-        {/* <Footer activeItem={activeItem} /> */}
-      </Site>
-    </>
+      <main>{children}</main>
+      <Footer
+        full={activeItem === active_screen.home}
+        isContact={activeItem === active_screen.contact}
+      />
+    </Site>
   );
 };

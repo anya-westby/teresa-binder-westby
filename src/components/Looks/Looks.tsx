@@ -77,15 +77,18 @@ const Looks: React.FC = () => {
               onClick={() => setOpen(i)}
               aria-label={`Enlarge ${l.caption}, ${l.production}`}
             >
-              <S.Frame style={{ background: tones[i % tones.length] }}>
-                <img src={l.imgSrc} alt={`${l.caption} in ${l.production}`} loading="lazy" />
-              </S.Frame>
-              <S.CardMeta>
+              <img
+                src={l.imgSrc}
+                alt={`${l.caption} in ${l.production}`}
+                loading="lazy"
+                style={{ background: tones[i % tones.length] }}
+              />
+              <S.Overlay>
                 <S.Name>{l.caption}</S.Name>
                 <S.Production>
                   {l.production} · {l.year}
                 </S.Production>
-              </S.CardMeta>
+              </S.Overlay>
             </S.Card>
           ))}
         </S.Masonry>

@@ -2,43 +2,37 @@ import styled from "styled-components";
 import { fadeIn, rise, theme } from "../../styledComponents/globals";
 
 export const Gallery = styled.section`
-  padding: 0 ${theme.gutter} 96px;
+  padding: 0 clamp(12px, 2vw, 32px) 96px;
 `;
 
 export const Masonry = styled.div`
-  columns: 3;
-  column-gap: 28px;
+  columns: 4;
+  column-gap: 12px;
 
-  @media (max-width: 1100px) {
-    columns: 2;
+  @media (max-width: 1280px) {
+    columns: 3;
   }
 
-  @media (max-width: 560px) {
-    columns: 1;
+  @media (max-width: 820px) {
+    columns: 2;
+    column-gap: 8px;
   }
 `;
 
 export const Card = styled.button`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  position: relative;
+  display: block;
   width: 100%;
-  margin: 0 0 28px;
+  margin: 0 0 12px;
   padding: 0;
   border: 0;
-  background: transparent;
-  color: ${theme.ink};
+  overflow: hidden;
+  color: ${theme.paper};
   font-family: ${theme.sans};
   text-align: left;
   cursor: zoom-in;
   break-inside: avoid;
   animation: ${rise} 0.7s ${theme.ease} both;
-`;
-
-export const Frame = styled.div`
-  position: relative;
-  width: 100%;
-  overflow: hidden;
 
   img {
     width: 100%;
@@ -48,36 +42,35 @@ export const Frame = styled.div`
     transition: transform 1.2s ${theme.ease};
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: ${theme.ink};
-    opacity: 0;
-    transition: opacity 0.4s;
+  &:hover img {
+    transform: scale(1.04);
   }
 
-  ${Card}:hover & img {
-    transform: scale(1.05);
-  }
-
-  ${Card}:hover &::after {
-    opacity: 0.18;
+  @media (max-width: 820px) {
+    margin-bottom: 8px;
   }
 `;
 
-export const CardMeta = styled.div`
+export const Overlay = styled.span`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: baseline;
-  width: 100%;
-  border-top: 1px solid ${theme.line};
-  padding-top: 10px;
-  transition: transform 0.35s;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 18px;
+  background: ${theme.ink};
+  transform: translateY(100%);
+  transition: transform 0.45s ${theme.easeInOut};
 
-  ${Card}:hover & {
-    transform: translateX(6px);
+  ${Card}:hover &,
+  ${Card}:focus-visible & {
+    transform: none;
+  }
+
+  @media (hover: none) {
+    display: none;
   }
 `;
 
@@ -92,7 +85,7 @@ export const Production = styled.span`
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: ${theme.muted};
+  color: ${theme.footMuted};
   white-space: nowrap;
 `;
 
@@ -144,6 +137,10 @@ export const LightboxImage = styled.figure`
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
+  }
+
+  figcaption ${Production} {
+    color: ${theme.muted};
   }
 `;
 

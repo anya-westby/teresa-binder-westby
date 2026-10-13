@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import * as React from "react";
-import Hamburger from "@mui/icons-material/Menu";
-import Close from "@mui/icons-material/Close";
-import useWindow from "../../utils/hooks/useWindow";
-import { Nav, NavLink, NavLinkContainer, NavToggle } from "./NavBar.styles";
+import { useState } from "react";
+import { Brand, Header, Links, NavLink, Toggle } from "./NavBar.styles";
 
 export const active_screen = {
   home: "home",
@@ -13,71 +10,39 @@ export const active_screen = {
   contact: "contact",
 };
 
+const links = [
+  { to: "/film-series", label: "Film + Series", key: active_screen.filmSeries },
+  { to: "/ads", label: "Ads", key: active_screen.ads },
+  { to: "/looks", label: "Looks", key: active_screen.looks },
+  { to: "/contact", label: "Contact", key: active_screen.contact },
+];
+
 export default function NavBar({ activeItem }: { activeItem: string }) {
-  const [isActive, setIsActive] = useState(false);
-  const { windowWidth } = useWindow();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const nav = document.getElementById("navbar");
-      if (nav) {
-        if (window.scrollY > 50) {
-          nav.classList.add("nav--scrolled");
-        } else {
-          nav.classList.remove("nav--scrolled");
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setIsActive(false);
-  }, [windowWidth]);
+  const [open, setOpen] = useState(false);
 
   return (
-    <Nav id="navbar">
-      <NavLinkContainer className={isActive ? "active" : ""}>
-        <NavLink
-          to="/"
-          className={activeItem === active_screen.home ? "active" : ""}
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to="/film-series"
-          className={activeItem === active_screen.filmSeries ? "active" : ""}
-        >
-          Film + Series
-        </NavLink>
-        <NavLink
-          to="/ads"
-          className={activeItem === active_screen.ads ? "active" : ""}
-        >
-          Ads
-        </NavLink>
-        <NavLink
-          to="/looks"
-          className={activeItem === active_screen.looks ? "active" : ""}
-        >
-          Looks
-        </NavLink>
-        <NavLink
-          to="/contact"
-          className={activeItem === active_screen.contact ? "active" : ""}
-        >
-          Contact
-        </NavLink>
-      </NavLinkContainer>
-      <NavToggle onClick={() => setIsActive(!isActive)}>
-        {isActive ? (
-          <Close className="nav__hamburger" />
-        ) : (
-          <Hamburger className="nav__hamburger" />
-        )}
-      </NavToggle>
-    </Nav>
+    <Header>
+      <Brand to="/">Teresa Binder Westby</Brand>
+      <Toggle
+        type="button"
+        aria-expanded={open}
+        aria-controls="primary-nav"
+        onClick={() => setOpen(!open)}
+      >
+        {open ? "Close" : "Menu"}
+      </Toggle>
+      <Links id="primary-nav" aria-label="Primary" $open={open}>
+        {links.map((l) => (
+          <NavLink
+            key={l.key}
+            to={l.to}
+            className={activeItem === l.key ? "active" : ""}
+            aria-current={activeItem === l.key ? "page" : undefined}
+          >
+            {l.label}
+          </NavLink>
+        ))}
+      </Links>
+    </Header>
   );
 }

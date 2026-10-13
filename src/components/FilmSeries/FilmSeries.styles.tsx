@@ -1,286 +1,126 @@
-import styled, { keyframes } from "styled-components";
-import { theme } from "../../styledComponents/globals";
+import styled from "styled-components";
+import { fadeIn, theme } from "../../styledComponents/globals";
 
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
+export const List = styled.section`
+  padding: 0 ${theme.gutter} 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  animation: ${fadeIn} 0.5s both;
 `;
 
-export const Container = styled.div`
-  width: 100%;
-  background: black;
-  padding: 4rem 6rem;
-  color: white;
-  box-sizing: border-box;
+export const Group = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 32px;
+  align-items: start;
+`;
 
-  @media (max-width: 768px) {
-    padding: 4rem 1rem;
-    justify-content: center;
+export const GroupHead = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: sticky;
+  top: 24px;
+
+  h2 {
+    margin: 0;
+    font-family: ${theme.serif};
+    font-weight: 400;
+    font-size: clamp(32px, 3.5vw, 48px);
+    line-height: 1;
   }
+`;
+
+export const Rows = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid ${theme.line};
+  grid-column: span 2;
+
+  @media (max-width: 720px) {
+    grid-column: auto;
+  }
+`;
+
+export const Row = styled.li`
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid ${theme.line};
+  transition: background 0.3s, padding-left 0.3s;
+
+  &:hover {
+    background: ${theme.hover};
+    padding-left: 12px;
+  }
+
+  img {
+    width: 48px;
+    height: 64px;
+    object-fit: cover;
+    transition: transform 0.5s ${theme.ease};
+  }
+
+  &:hover img {
+    transform: rotate(-4deg) scale(1.08);
+  }
+
+  @media (max-width: 720px) {
+    grid-template-columns: 40px 1fr;
+
+    img {
+      width: 40px;
+      height: 54px;
+    }
+  }
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 `;
 
 export const Title = styled.span`
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 300;
-  font-size: 2rem;
-  letter-spacing: 1px;
+  font-family: ${theme.serif};
+  font-size: 28px;
+  line-height: 1.05;
+  transition: transform 0.3s;
+
+  ${Row}:hover & {
+    transform: translateX(6px);
+  }
+`;
+
+export const Role = styled.span`
+  font-size: 14px;
+  color: ${theme.muted};
+`;
+
+export const Year = styled.div`
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 12px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: ${theme.sage};
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    letter-spacing: -1px;
-    text-align: left;
-  }
-`;
-
-export const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    width: 100%;
-    padding-right: 0;
-  }
-`;
-
-export const TabsContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    align-self: flex-start;
-    margin-top: 0rem;
-  }
-`;
-
-export const TabButton = styled.button<{ active: boolean }>`
-  padding: 0.5rem 1.25rem;
-  background: ${(props) => (props.active ? theme.sage : "transparent")};
-  color: ${(props) => (props.active ? "black" : "white")};
-  border: 1px solid ${theme.sage};
-  border-radius: 4px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  transition: all 0.25s ease;
-  cursor: pointer;
-
-  &:hover {
-    background: ${(props) =>
-      props.active ? theme.sage : "rgba(155, 164, 145, 0.2)"};
-  }
-`;
-
-export const SectionHeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 2rem 0;
-  width: 100%;
-
-  &:first-of-type {
-    margin-top: 3rem;
-  }
-`;
-
-export const SectionHeaderLine = styled.div`
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(
-    to var(--direction, right),
-    transparent,
-    rgba(255, 255, 255, 0.3)
-  );
-
-  &:first-child {
-    --direction: right;
-  }
-
-  &:last-child {
-    --direction: left;
-  }
-`;
-
-export const SectionHeaderContent = styled.div`
-  padding: 0 2rem;
-  position: relative;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 6px;
-    height: 6px;
-    background: white;
-    border-radius: 50%;
-    transform: translateY(-50%);
-  }
-
-  &::before {
-    left: 0.5rem;
-  }
-
-  &::after {
-    right: 0.5rem;
-  }
-`;
-
-export const SectionHeaderText = styled.h2`
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-  font-size: 1.5rem;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin: 0;
-  padding: 0 1rem;
-  text-align: center;
+  color: ${theme.muted};
   white-space: nowrap;
 
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    white-space: normal;
-  }
-`;
-
-export const GalleryGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding-bottom: 4rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+  span:first-child {
+    border: 1px solid ${theme.line};
+    border-radius: 999px;
+    padding: 6px 10px;
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 0.75rem;
+  @media (max-width: 720px) {
+    grid-column: 2;
   }
-`;
-
-export const GalleryItem = styled.div`
-  position: relative;
-  overflow: hidden;
-`;
-
-export const ImageContainer = styled.div`
-  aspect-ratio: 3/4;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.7s ease;
-  }
-
-  ${GalleryItem}:hover & img {
-    transform: scale(1.1);
-  }
-
-  @media (max-width: 768px) {
-    aspect-ratio: 2/3;
-  }
-`;
-
-export const ItemOverlay = styled.div`
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.95) 0%,
-    rgba(0, 0, 0, 0.8) 30%,
-    rgba(0, 0, 0, 0.4) 60%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-
-  @media (max-width: 768px) {
-    opacity: 1;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0.5) 50%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    padding: 1.5rem;
-  }
-
-  ${GalleryItem}:hover & {
-    opacity: 1.5;
-  }
-`;
-
-export const ContentWrapper = styled.div`
-  transform: translateY(1rem);
-  transition: transform 0.5s ease;
-
-  ${GalleryItem}:hover & {
-    transform: translateY(0);
-  }
-
-  @media (max-width: 768px) {
-    transform: translateY(0);
-  }
-`;
-
-export const ItemTitle = styled.h2`
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-`;
-
-export const ItemRole = styled.p`
-  font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-
-  @media (max-width: 768px) {
-    font-size: 0.8rem;
-  }
-`;
-
-export const YearContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-export const Divider = styled.span`
-  width: 3rem;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.5);
-
-  @media (max-width: 768px) {
-    width: 2rem;
-  }
-`;
-
-export const Year = styled.span`
-  font-family: "Montserrat", sans-serif;
-  color: rgba(255, 255, 255, 0.5);
 `;

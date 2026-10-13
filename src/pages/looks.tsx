@@ -12,3 +12,5 @@ const LooksPage: React.FC = () => {
 };
 
 export default LooksPage;
+
+export { Head } from "../components/Seo";

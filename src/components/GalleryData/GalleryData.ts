@@ -386,7 +386,7 @@ export const galleryData: GalleryData = {
     {
       imgSrc: "https://www.youtube.com/embed/-FbUXkJlFVI?si=F2OTvC4HvKkVvW3I",
       title: "Chunky 'Bragging Rights'",
-      role: "Campbells Chunky",
+      role: "Campbell's Chunky",
       year: "2023",
     },
     {
@@ -410,3 +410,26 @@ export const galleryData: GalleryData = {
 
   ],
 };
+
+export type CreditType = "Film" | "Series";
+
+export interface Credit extends GalleryItem {
+  type: CreditType;
+}
+
+export const allCredits: Credit[] = [
+  ...galleryData.film.map((c) => ({ ...c, type: "Film" as const })),
+  ...galleryData.series.map((c) => ({ ...c, type: "Series" as const })),
+];
+
+// "2022-2023" -> "2022–23"
+export const formatYears = (year: string): string => {
+  const [start, end] = year.split("-");
+  if (!end) return start;
+  return `${start}–${end.slice(0, 2) === start.slice(0, 2) ? end.slice(2) : end}`;
+};
+
+export const firstYear = (year: string): number => parseInt(year.split("-")[0]);
+
+export const youtubeId = (embedUrl: string): string =>
+  embedUrl.match(/embed\/([^?]+)/)?.[1] ?? "";

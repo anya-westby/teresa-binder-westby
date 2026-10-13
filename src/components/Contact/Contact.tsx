@@ -1,35 +1,34 @@
 import * as React from "react";
-import { Mail, Phone, Title } from "@mui/icons-material";
+import { EMAIL, PHONE, PHONE_HREF } from "../Footer/Footer";
+import { ArrowIcon, Eyebrow, PageIntro, PageTitle, Rise, theme } from "../../styledComponents/globals";
 import * as S from "./Contact.styles";
 
 const Contact: React.FC = () => {
   return (
-    <S.Container>
-      <S.ContentWrapper>
-        <S.Title>Contact</S.Title>
-        <S.Grid>
-          <S.ContactLink href="mailto:tgoddess@mac.com">
-            <S.ContactItem>
-              <S.IconWrapper>
-                <Mail />
-              </S.IconWrapper>
-              <S.Label>Email</S.Label>
-              <S.Value>tgoddess@mac.com</S.Value>
-            </S.ContactItem>
-          </S.ContactLink>
-
-          <S.ContactLink href="tel:+16108833387">
-            <S.ContactItem>
-              <S.IconWrapper>
-                <Phone />
-              </S.IconWrapper>
-              <S.Label>Phone</S.Label>
-              <S.Value>(610) 883-3387</S.Value>
-            </S.ContactItem>
-          </S.ContactLink>
-        </S.Grid>
-      </S.ContentWrapper>
-    </S.Container>
+    <>
+      <PageIntro>
+        <Eyebrow>Get in touch</Eyebrow>
+        <PageTitle>Contact</PageTitle>
+        <Rise $delay={0.3} style={{ height: 1, background: theme.ink }} />
+      </PageIntro>
+      <S.Body $delay={0.42}>
+        <S.Links>
+          <S.BigLink href={`mailto:${EMAIL}`}>
+            {EMAIL} <ArrowIcon size="lg" />
+          </S.BigLink>
+          <S.BigLink href={PHONE_HREF}>
+            {PHONE} <ArrowIcon size="lg" />
+          </S.BigLink>
+        </S.Links>
+        <S.Blurb>
+          <p>Costume design for film, series and commercials.</p>
+          <p>
+            Available for productions nationwide. For bookings, availability and portfolio
+            requests, email or call directly.
+          </p>
+        </S.Blurb>
+      </S.Body>
+    </>
   );
 };
 

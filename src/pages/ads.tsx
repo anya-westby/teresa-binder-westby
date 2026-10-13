@@ -12,3 +12,5 @@ const AdsPage: React.FC = () => {
 };
 
 export default AdsPage;
+
+export { Head } from "../components/Seo";

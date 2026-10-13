@@ -1,221 +1,323 @@
-import styled, { keyframes } from "styled-components";
 import { Link } from "gatsby";
-import { theme } from "../../styledComponents/globals";
+import styled, { keyframes } from "styled-components";
+import { rise, theme } from "../../styledComponents/globals";
 
-export const landingTheme = {
-  background: "#0f0f0f",
-  text: "#ffffff",
-  accent: "#FF3366",
-  secondary: "#6B7280",
-  overlay: "rgba(15, 15, 15, 0.8)",
-};
-
-export const fadeUp = keyframes`
-  from { 
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
-  }
+const grow = keyframes`
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 `;
 
-const fadeScale = keyframes`
-  from { 
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to { 
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-export const Container = styled.div`
+export const Hero = styled.section`
+  padding: 72px ${theme.gutter} 56px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  gap: 28px;
+`;
+
+export const HeroName = styled.h1`
+  margin: 0;
+  font-family: ${theme.serif};
+  font-weight: 300;
+  font-size: clamp(56px, 10vw, 148px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+  text-wrap: balance;
+  animation: ${rise} 0.9s ${theme.ease} 0.22s both;
+
+  em {
+    font-weight: 300;
+  }
+`;
+
+export const Ruler = styled.div`
+  height: 1px;
   width: 100%;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  position: relative;
-  background: ${landingTheme.background};
-  background-image: radial-gradient(
-      circle at top right,
-      rgba(0, 80, 0, 0.3),
-      transparent 70%
-    ),
-    radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.7), transparent 70%);
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000;
+  background: ${theme.ink};
+  transform-origin: left;
+  animation: ${grow} 1.2s ${theme.easeInOut} 0.5s both;
+`;
+
+export const HeroGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 32px;
+  align-items: end;
+  animation: ${rise} 0.9s ${theme.ease} 0.36s both;
+`;
+
+export const Lede = styled.p`
+  margin: 0;
+  font-family: ${theme.serif};
+  font-size: 28px;
+  line-height: 1.3;
+  max-width: 30ch;
+  text-wrap: pretty;
+`;
+
+export const Facts = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: ${theme.muted};
+`;
+
+export const Btn = styled(Link)`
+  justify-self: start;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid ${theme.ink};
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+
+  svg {
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    background: ${theme.ink};
+    color: ${theme.paper};
+  }
+
+  &:hover svg {
+    transform: translateX(4px);
+  }
 `;
 
 export const Section = styled.section`
-  height: 100vh;
-  width: 100%;
-  scroll-snap-align: start;
+  padding: 64px ${theme.gutter};
   display: flex;
-  position: relative;
-  z-index: 1;
-  padding: 2rem;
-  gap: 4rem;
-  max-width: 1800px;
-  margin: 0 auto;
-  box-sizing: border-box;
+  flex-direction: column;
+  gap: 40px;
+  border-top: 1px solid ${theme.line};
+`;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    height: auto;
-    padding: 3rem 1.5rem;
-    gap: 1rem;
-    order: 1;
+export const WorkSection = styled(Section)`
+  padding-top: 80px;
+  border-top-color: ${theme.ink};
+`;
+
+export const SectionHead = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  flex-wrap: wrap;
+
+  h2 span {
+    font-style: italic;
+    color: ${theme.clay};
   }
 `;
 
-export const IntroSection = styled(Section)`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+export const TextLink = styled(Link)`
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 3px;
+`;
+
+export const TileGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 24px;
+`;
+
+export const Tile = styled(Link)`
   position: relative;
   overflow: hidden;
-  box-sizing: border-box;
-  gap: 10px;
+  display: block;
+  aspect-ratio: 3 / 4;
 
-  &::after {
-    content: "";
+  img {
     position: absolute;
-    bottom: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.1s ${theme.ease};
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+
+  .num {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: ${theme.paper};
+    mix-blend-mode: difference;
+  }
+
+  .cap {
+    position: absolute;
     left: 0;
     right: 0;
-    height: 150px;
-    background: linear-gradient(
-      to top,
-      ${landingTheme.background},
-      transparent
-    );
-    pointer-events: none;
+    bottom: 0;
+    padding: 20px 22px;
+    background: ${theme.ink};
+    color: ${theme.paper};
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    transform: translateY(100%);
+    transition: transform 0.45s ${theme.easeInOut};
   }
 
-  @media (max-width: 768px) {
-    gap: 0;
+  &:hover .cap,
+  &:focus-visible .cap {
+    transform: none;
+  }
+
+  @media (hover: none) {
+    .cap {
+      transform: none;
+    }
   }
 `;
 
-export const ImageContainer = styled.div<{ isLeft: boolean; delay?: number }>`
-  flex: 1;
+export const CapTitle = styled.span`
+  font-family: ${theme.serif};
+  font-size: 26px;
+  line-height: 1;
+`;
+
+export const Small = styled.span`
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+`;
+
+export const LooksSection = styled(Section)`
+  padding-right: 0;
+  gap: 32px;
+  margin-top: 40px;
+
+  ${SectionHead} {
+    padding-right: ${theme.gutter};
+  }
+`;
+
+export const Strip = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: translateX(${(props) => (props.isLeft ? "-10%" : "10%")});
-  animation: ${fadeScale} 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  animation-delay: ${(props) => props.delay || 0}s;
-  will-change: transform, opacity;
-
-  @media (max-width: 768px) {
-    transform: translateY(-5%);
-    order: 2;
-    margin-bottom: -0.5rem;
-  }
-`;
-export const StyledImage = styled.img`
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 20px;
-  filter: brightness(0.9);
-  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-
-  &:hover {
-    transform: scale(1.02);
-    filter: brightness(1.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  }
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  padding-right: ${theme.gutter};
+  scroll-snap-type: x mandatory;
 `;
 
-export const ContentContainer = styled.div<{ isLeft: boolean }>`
-  flex: 1;
+export const Look = styled(Link)`
+  flex: 0 0 240px;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: ${(props) => (props.isLeft ? "flex-start" : "flex-end")};
-  padding: 0 4rem;
-
-  @media (max-width: 768px) {
-    padding: 0.5rem 0rem 0;
-    align-items: center;
-    text-align: center;
-    order: 1;
-    margin-top: -1rem;
-  }
-`;
-
-export const Title = styled.span<{ delay?: number }>`
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 400;
-  font-optical-sizing: auto;
-  font-size: 5rem;
-  font-weight: 200;
-  color: ${theme.cream};
-  margin-bottom: 1.5rem;
-  letter-spacing: -1.2px;
-  opacity: 0;
-  animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  animation-delay: ${(props) => props.delay || 0}s;
-  will-change: transform, opacity;
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-  }
-`;
-
-export const Description = styled.span<{ isLeft?: boolean; delay?: number }>`
-  font-family: "DM Sans", sans-serif;
-  font-size: 1.2rem;
-  letter-spacing: 5px;
-  line-height: 25px;
-  font-weight: 200;
-  color: ${theme.cream};
-  text-transform: uppercase;
-  margin: 0.25rem;
-  max-width: 400px;
-  text-align: ${(props) => (props.isLeft ? "left" : "right")};
-  opacity: 0;
-  animation: ${fadeUp} 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-  animation-delay: ${(props) => props.delay || 0.2}s;
-  will-change: transform, opacity;
-
-  @media (max-width: 768px) {
-    text-align: center;
-    font-size: 0.875rem;
-  }
-`;
-
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${landingTheme.text};
-  position: relative;
-  transition: all 0.3s ease;
-  margin-top: 1rem;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: ${landingTheme.accent};
-    transition: width 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-  }
+  gap: 12px;
+  transition: transform 0.5s ${theme.ease};
 
   &:hover {
-    color: ${landingTheme.accent};
+    transform: translateY(-8px);
+  }
 
-    &::after {
-      width: 100%;
-    }
+  img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+  }
+`;
+
+export const LookName = styled.span`
+  font-family: ${theme.serif};
+  font-size: 20px;
+  line-height: 1.15;
+`;
+
+export const LookMeta = styled(Small)`
+  color: ${theme.muted};
+`;
+
+export const AdsSection = styled.section`
+  padding: 64px ${theme.gutter};
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+  gap: 48px;
+  border-top: 1px solid ${theme.line};
+`;
+
+export const AdsIntro = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: ${theme.muted};
+    max-width: 38ch;
+  }
+`;
+
+export const AdList = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid ${theme.line};
+`;
+
+export const AdRow = styled(Link)`
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 18px 0;
+  border-top: 1px solid ${theme.line};
+  transition: background 0.3s, padding-left 0.3s;
+
+  &:hover {
+    background: ${theme.hover};
+    padding-left: 12px;
+  }
+
+  .yr,
+  .sub {
+    color: ${theme.muted};
+  }
+
+  .yr {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .name {
+    font-family: ${theme.serif};
+    font-size: 24px;
+    line-height: 1.1;
+  }
+
+  .sub {
+    font-size: 14px;
   }
 `;

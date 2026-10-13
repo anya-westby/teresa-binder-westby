@@ -12,3 +12,5 @@ const FilmSeriesPage: React.FC = () => {
 };
 
 export default FilmSeriesPage;
+
+export { Head } from "../components/Seo";

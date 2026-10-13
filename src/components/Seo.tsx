@@ -1,20 +1,16 @@
-// Create a new file: src/components/Seo.tsx
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import * as React from "react";
 
 export const Head = () => {
   return (
     <>
-      <title>Teresa Binder Westby</title>
+      <html lang="en" />
+      <title>Teresa Binder Westby — Costume Designer</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <style>{`
-        html, body, #___gatsby {
-          background: rgb(15, 15, 15) !important;
-          margin: 0;
-          padding: 0;
-          min-height: 100vh;
-        }
-      `}</style>
+      <meta
+        name="description"
+        content="Teresa Binder Westby, costume designer for film, television and advertising."
+      />
+      <meta name="theme-color" content="#F4EFE7" />
     </>
   );
 };

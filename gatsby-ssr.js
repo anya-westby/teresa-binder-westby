@@ -7,7 +7,7 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
     dangerouslySetInnerHTML={{
       __html: `
         html, body, #___gatsby, #gatsby-focus-wrapper {
-          background: #0f0f0f !important;
+          background: #F4EFE7 !important;
           margin: 0;
           padding: 0;
           min-height: 100vh;
@@ -33,8 +33,8 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
       dangerouslySetInnerHTML={{
         __html: `
           (function() {
-            document.body.style.background = '#0f0f0f';
-            document.documentElement.style.background = '#0f0f0f';
+            document.body.style.background = '#F4EFE7';
+            document.documentElement.style.background = '#F4EFE7';
           })();
         `
       }}

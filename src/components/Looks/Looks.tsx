@@ -1,417 +1,147 @@
-import React, { useEffect, useState } from "react";
-import Masonry from "react-masonry-css";
+import * as React from "react";
+import { useEffect, useMemo, useState } from "react";
+import { looksData } from "../LooksData/LooksData";
+import {
+  ArrowIcon,
+  Eyebrow,
+  Meta,
+  PageIntro,
+  PageTitle,
+  Pill,
+  PillGroup,
+  Toolbar,
+  tones,
+} from "../../styledComponents/globals";
 import * as S from "./Looks.styles";
 
-interface LookItem {
-  id: string;
-  imgSrc: string;
-  caption: string;
-  production: string;
-  year: string;
-  span?: number;
-}
+const productions = ["All", ...Array.from(new Set(looksData.map((l) => l.production)))];
 
 const Looks: React.FC = () => {
-  const [looks, setLooks] = useState<LookItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [filter, setFilter] = useState("All");
+  const [open, setOpen] = useState<number | null>(null);
+
+  const items = useMemo(
+    () => looksData.filter((l) => filter === "All" || l.production === filter),
+    [filter]
+  );
+
+  const step = (dir: 1 | -1) =>
+    setOpen((i) => (i === null ? i : (i + dir + items.length) % items.length));
 
   useEffect(() => {
-    // Set the initial window width after component mounts (client-side only)
-    setWindowWidth(window.innerWidth);
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-      // Close modal if screen size changes to mobile
-      if (window.innerWidth < 768 && modalOpen) {
-        closeModal();
-      }
+    if (open === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(null);
+      if (e.key === "ArrowRight") step(1);
+      if (e.key === "ArrowLeft") step(-1);
     };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [modalOpen]);
-
-  useEffect(() => {
-    // This is where you would fetch the data from Firebase
-    // For now, I'll create a mock data array
-    // Replace this with your Firebase fetch logic
-    const fetchLooks = async () => {
-      try {
-        // Mock data - replace with your Firebase fetch
-        const mockLooks: LookItem[] = [
-          {
-            id: "1",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_1.jpeg?alt=media&token=7c24bf80-f15e-4c5a-931c-8c22f11551e1",
-            caption: "Nicole Kidman",
-            production: "Lioness",
-            year: "2024",
-            span: 2,
-          },
-          {
-            id: "2",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FMovieGuru-VDN-011919.jpeg?alt=media&token=9d28e527-a425-4051-88ce-e04fca593446",
-            caption: "Samuel L. Jackson",
-            production: "Glass",
-            year: "2019",
-            span: 2,
-          },
-          {
-            id: "3",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FZoeAndTaylor.PNG?alt=media&token=ad3618cf-80a8-4ce2-b241-674a4bc9f56b",
-            caption: "Zoe Saldaña and Taylor Sheridan",
-            production: "Lioness",
-            year: "2024",
-            span: 2,
-          },
-
-          {
-            id: "4",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FFreeman.PNG?alt=media&token=2004c01e-aa8f-47a9-81bb-41d7816f67ff",
-            caption: "Morgan Freeman",
-            production: "Lioness",
-            year: "2024",
-            span: 2,
-          },
-          {
-            id: "5",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2F210405115037-01-fletcher-street-concrete-cowboys-idris-elba.webp?alt=media&token=d3262a42-c0ff-440b-96c6-c918a4de826a",
-            caption: "Idris Elba and Caleb McLaughlin",
-            production: "Concrete Cowboy",
-            year: "2020",
-            span: 2,
-          },
-          {
-            id: "6",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_2.avif?alt=media&token=15dfb6e6-b7e9-4714-9908-73514e9f2f56",
-            caption: "Nicole Kidman and Zoe Saldaña",
-            production: "Lioness",
-            year: "2024",
-            span: 2,
-          },
-          {
-            id: "7",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FRupert.png?alt=media&token=968a4b56-0557-4888-a486-3518492ad780",
-            caption: "Rupert Grint",
-            production: "Servant",
-            year: "2019",
-            span: 2,
-          },
-          {
-            id: "8",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGlass.jpeg?alt=media&token=f622e2e9-a1f3-44e3-b5b6-54f2f44cbdc8",
-            caption: "James McAvoy, Bruce Willis, and Samuel L. Jackson",
-            production: "Glass",
-            year: "2019",
-            span: 2,
-          },
-          {
-            id: "9",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2Fbest-supporting-actor-actress-robert-de-niro-jacki-weaver-silver-linings-playbook.jpg?alt=media&token=3502400c-2dfc-4fa1-9b95-810a920c8249",
-            caption: "Robert De Niro and Jacki Weaver",
-            production: "Silver Linings Playbook",
-            year: "2012",
-            span: 2,
-          },
-          {
-            id: "10",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FConcrete-Cowboy-Seven.avif?alt=media&token=6946f40c-6d7c-4455-942c-abe1f121e4a2",
-            caption: "Caleb McLaughlin and Jharrel Jerome",
-            production: "Concrete Cowboy",
-            year: "2020",
-            span: 2,
-          },
-          {
-            id: "11",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2Frobert-de-niro-in-silver-linings-playbook.webp?alt=media&token=21ef7725-b921-4e60-86b2-825c29f306ca",
-            caption: "Robert De Niro",
-            production: "Silver Linings Playbook",
-            year: "2012",
-            span: 2,
-          },
-          {
-            id: "12",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLionessGroup.PNG?alt=media&token=5684e676-9399-4afc-9e22-f5adad17c101",
-            caption:
-              "Jennifer Ehle, Bruce McGill, Morgan Freeman, Michael Kelly, Nicole Kidman",
-            production: "Lioness",
-            year: "2024",
-            span: 2,
-          },
-          {
-            id: "13",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-20%20at%209.52.13%E2%80%AFAM.png?alt=media&token=a31ce248-698c-4b59-9c52-adcffd2862cd",
-            caption: "Carla Gugino",
-            production: "The Mighty Macs",
-            year: "2009",
-            span: 2,
-          },
-
-          {
-            id: "14",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FMCDCREE_EC023_H.webp?alt=media&token=a5bb9df2-0501-49cd-ae80-f97b5daffea1",
-            caption: "Michael B. Jordan and Sylvester Stallone",
-            production: "Creed",
-            year: "2015",
-            span: 2,
-          },
-          {
-            id: "15",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGere.jpeg?alt=media&token=838ae25e-3d2e-4f89-882d-7073b456860c",
-            caption: "Richard Gere",
-            production: "The Benefactor",
-            year: "2015",
-            span: 2,
-          },
-          {
-            id: "16",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-21%20at%203.28.34%E2%80%AFPM.png?alt=media&token=65759c8f-4bb3-4cff-b9c6-37bea2548d27",
-            caption: "Cuba Gooding Jr. and Helen Mirren",
-            production: "Shadowboxer",
-            year: "2005",
-            span: 2,
-          },
-
-          {
-            id: "17",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-20%20at%2010.24.29%E2%80%AFAM.png?alt=media&token=07ce33f7-cec3-494c-a64c-079e986661da",
-            caption: "Anna Gunn",
-            production: "Equity",
-            year: "2016",
-            span: 2,
-          },
-          {
-            id: "18",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FLioness_3.png?alt=media&token=882e85fc-c999-4db7-b01f-2ad9c854bb8b",
-            caption: "Nicole Kidman",
-            production: "Lioness",
-            year: "2024",
-            span: 2,
-          },
-          {
-            id: "19",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FScreenshot%202025-03-21%20at%203.28.00%E2%80%AFPM.png?alt=media&token=72afbe06-56a9-4d76-a30d-78a2a62a1467",
-            caption: "Carla Gugino and Ellen Burstyn",
-            production: "The Mighty Macs",
-            year: "2009",
-            span: 2,
-          },
-
-          {
-            id: "20",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2Frev-1-C2_09807_RC_High_Res_JPEG.avif?alt=media&token=9e5cfe4c-ce2b-467d-8e44-2ca977a4dbeb",
-            caption: "Michael B. Jordan",
-            production: "Creed",
-            year: "2015",
-            span: 2,
-          },
-          {
-            id: "21",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FPurefoy.jpg?alt=media&token=5edc808d-dd8f-4712-8d97-781c4dcfebee",
-            caption: "James Purefoy",
-            production: "Equity",
-            year: "2016",
-            span: 2,
-          },
-          {
-            id: "22",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FGenesis.PNG?alt=media&token=3b250278-4505-41c4-beae-32541880eb69",
-            caption: "Genesis Rodriguez",
-            production: "Lioness",
-            year: "2024",
-            span: 2,
-          },
-          {
-            id: "23",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FMcAvoy.png?alt=media&token=5c373738-3148-4fd7-b521-6394045074b9",
-            caption: "James McAvoy",
-            production: "Split",
-            year: "2016",
-            span: 2,
-          },
-
-          {
-            id: "24",
-            imgSrc:
-              "https://firebasestorage.googleapis.com/v0/b/tbw-portfolio-99437.appspot.com/o/looks%2FTessa.png?alt=media&token=728b549a-0552-4ee4-b338-4bec00737179",
-            caption: "Tessa Thompson",
-            production: "Creed",
-            year: "2015",
-            span: 2,
-          },
-        ];
-
-        setLooks(mockLooks);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching looks:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchLooks();
-  }, []);
-
-  // Function to assign span values for a mosaic effect
-  const assignSpans = (items: LookItem[]): LookItem[] => {
-    return items.map((item, index) => {
-      // Assign different spans to create visual interest
-      // You can customize this logic based on your preferences
-      if (index % 5 === 0) return { ...item, span: 2 };
-      if (index % 7 === 0) return { ...item, span: 2 };
-      return item;
-    });
-  };
-
-  // Open modal with selected image - only on non-mobile screens
-  const openModal = (index: number) => {
-    // Don't open modal on mobile screens (width < 768px)
-    if (windowWidth < 768) return;
-
-    setCurrentImageIndex(index);
-    setModalOpen(true);
-    // Prevent scrolling when modal is open
     document.body.style.overflow = "hidden";
-  };
-
-  // Close modal
-  const closeModal = () => {
-    setModalOpen(false);
-    // Re-enable scrolling
-    document.body.style.overflow = "auto";
-  };
-
-  // Navigate to next image
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev === looks.length - 1 ? 0 : prev + 1));
-  };
-
-  // Navigate to previous image
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentImageIndex((prev) => (prev === 0 ? looks.length - 1 : prev - 1));
-  };
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!modalOpen) return;
-
-      if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowRight")
-        setCurrentImageIndex((prev) =>
-          prev === looks.length - 1 ? 0 : prev + 1
-        );
-      if (e.key === "ArrowLeft")
-        setCurrentImageIndex((prev) =>
-          prev === 0 ? looks.length - 1 : prev - 1
-        );
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
+  }, [open === null, items.length]);
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [modalOpen, looks.length]);
-
-  if (loading) {
-    return (
-      <S.Container>
-        <S.Title>Looks</S.Title>
-        <div>Loading...</div>
-      </S.Container>
-    );
-  }
+  const current = open === null ? null : items[open];
 
   return (
-    <S.Container>
-      <S.Title>Looks</S.Title>
-      <S.MasonryWrapper>
-        <Masonry
-          breakpointCols={{
-            default: 3,
-            1100: 2,
-            700: 2,
-            500: 1,
-          }}
-          className="masonry-grid"
-          columnClassName="masonry-grid_column"
-        >
-          {looks.map((look, index) => (
-            <S.LookItem key={look.id} onClick={() => openModal(index)}>
-              <S.ImageContainer>
-                <img src={look.imgSrc} alt={look.caption} loading="lazy" />
-              </S.ImageContainer>
-              <S.Overlay>
-                <S.Caption>{look.caption}</S.Caption>
-                <S.SubCaption>
-                  {look.production} - {look.year}
-                </S.SubCaption>
-              </S.Overlay>
-            </S.LookItem>
-          ))}
-        </Masonry>
-      </S.MasonryWrapper>
+    <>
+      <PageIntro>
+        <Eyebrow>Gallery</Eyebrow>
+        <PageTitle>Looks</PageTitle>
+        <Toolbar $delay={0.3}>
+          <PillGroup role="group" aria-label="Filter by project">
+            {productions.map((p) => (
+              <Pill
+                key={p}
+                type="button"
+                $on={filter === p}
+                aria-pressed={filter === p}
+                onClick={() => setFilter(p)}
+              >
+                {p}
+              </Pill>
+            ))}
+          </PillGroup>
+          <Meta>{items.length} looks</Meta>
+        </Toolbar>
+      </PageIntro>
 
-      {/* Modal Slideshow */}
-      {modalOpen && looks.length > 0 && (
-        <S.Modal onClick={closeModal}>
-          <S.ModalContent onClick={(e) => e.stopPropagation()}>
-            <S.CloseButton onClick={closeModal}>&times;</S.CloseButton>
-
-            <S.SlideNavButton left onClick={prevImage}>
-              &#10094;
-            </S.SlideNavButton>
-
-            <S.ModalImageContainer>
+      <S.Gallery>
+        <S.Masonry key={filter}>
+          {items.map((l, i) => (
+            <S.Card
+              key={l.id}
+              type="button"
+              onClick={() => setOpen(i)}
+              aria-label={`Enlarge ${l.caption}, ${l.production}`}
+            >
               <img
-                src={looks[currentImageIndex].imgSrc}
-                alt={looks[currentImageIndex].caption}
+                src={l.imgSrc}
+                alt={`${l.caption} in ${l.production}`}
+                loading="lazy"
+                style={{ background: tones[i % tones.length] }}
               />
-              <S.ModalCaption>
-                <h3>{looks[currentImageIndex].caption}</h3>
-                <p>
-                  {looks[currentImageIndex].production} -{" "}
-                  {looks[currentImageIndex].year}
-                </p>
-              </S.ModalCaption>
-            </S.ModalImageContainer>
+              <S.Overlay>
+                <S.Name>{l.caption}</S.Name>
+                <S.Production>
+                  {l.production} · {l.year}
+                </S.Production>
+              </S.Overlay>
+            </S.Card>
+          ))}
+        </S.Masonry>
+      </S.Gallery>
 
-            <S.SlideNavButton right onClick={nextImage}>
-              &#10095;
-            </S.SlideNavButton>
-
-            <S.ModalCounter>
-              {currentImageIndex + 1} / {looks.length}
-            </S.ModalCounter>
-          </S.ModalContent>
-        </S.Modal>
+      {current && (
+        <S.Lightbox
+          role="dialog"
+          aria-modal="true"
+          aria-label={current.caption}
+          onClick={() => setOpen(null)}
+        >
+          <S.LightboxBar>
+            <span>
+              {open! + 1} / {items.length}
+            </span>
+            <S.IconButton type="button" onClick={() => setOpen(null)} autoFocus>
+              Close
+            </S.IconButton>
+          </S.LightboxBar>
+          <S.IconButton
+            type="button"
+            aria-label="Previous look"
+            style={{ transform: "scaleX(-1)" }}
+            onClick={(e) => {
+              e.stopPropagation();
+              step(-1);
+            }}
+          >
+            <ArrowIcon />
+          </S.IconButton>
+          <S.LightboxImage onClick={(e) => e.stopPropagation()}>
+            <img src={current.imgSrc} alt={`${current.caption} in ${current.production}`} />
+            <figcaption>
+              <S.Name>{current.caption}</S.Name>
+              <S.Production>
+                {current.production} · {current.year}
+              </S.Production>
+            </figcaption>
+          </S.LightboxImage>
+          <S.IconButton
+            type="button"
+            aria-label="Next look"
+            onClick={(e) => {
+              e.stopPropagation();
+              step(1);
+            }}
+          >
+            <ArrowIcon />
+          </S.IconButton>
+        </S.Lightbox>
       )}
-    </S.Container>
+    </>
   );
 };
 
